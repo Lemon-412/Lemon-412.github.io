@@ -198,7 +198,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-02 22:05:25 / 修改时间：23:20:09" itemprop="dateCreated datePublished" datetime="2019-12-02T22:05:25+08:00">2019-12-02</time>
+              <time title="创建时间：2019-12-02 22:05:25 / 修改时间：23:22:15" itemprop="dateCreated datePublished" datetime="2019-12-02T22:05:25+08:00">2019-12-02</time>
             </span>
 
           
@@ -248,8 +248,9 @@
 <li><strong>时延带宽积</strong>：bit，表示链路可容纳多少个比特</li>
 <li><strong>往返时间RTT</strong>：从发送方发送数据开始，到发送方收到来自接收方的确认，总共经历的时间。<center> **发送时间=数据长度/发送速率** </center>
 <center> **有效数据率=数据长度/(发送时间+RTT)** </center></li>
-<li><strong>利用率</strong>：空闲信道利用率为0。网络利用率为信道利用率的加权平均。实际时延与空闲时延的关系为：<script type="math/tex; mode=display">D=\frac{D_0}{1-U}</script><em>注意：1Mbps=10^6bit/s，1MB=2^20B=8</em>2^20bit*</li>
+<li><strong>利用率</strong>：空闲信道利用率为0。网络利用率为信道利用率的加权平均。实际时延与空闲时延的关系为：</li>
 </ul>
+<script type="math/tex; mode=display">D=\frac{D_0}{1-U}</script><p><em>注意：1Mbps=10^6bit/s，1MB=2^20B=8</em>2^20bit*</p>
 <p><em>高速链路提升了发送速率而非传播速率</em></p>
 <p>非性能指标：<br>费用、质量、标准化、可靠性、可扩展升级性、易于管理和维护</p>
 <h4 id="1-7-计算机网络的体系结构"><a href="#1-7-计算机网络的体系结构" class="headerlink" title="1.7 计算机网络的体系结构"></a>1.7 计算机网络的体系结构</h4><p><strong>计算机网络的体系结构：计算机网络的各层及其协议的集合。</strong><br>历史：OSI协议和TCP/IP协议</p>
@@ -296,8 +297,9 @@
 <li>调幅（AM）：简单，抗干扰差</li>
 <li>调频（FM）：抗干扰，占用带宽</li>
 <li>调相（PM）：抗干扰，有同步能力</li>
-<li>多元制混合调制：码元增加，出错率增加（如<strong>正交振幅调制QAM</strong>）<br>脉冲编码调制PCM：模拟 —&gt; 数字<br>采样、量化、编码</li>
+<li>多元制混合调制：码元增加，出错率增加（如<strong>正交振幅调制QAM</strong>）</li>
 </ul>
+<p>脉冲编码调制PCM：模拟 —&gt; 数字<br>采样、量化、编码</p>
 <p><strong>信道的极限容量</strong>：<br>限制因素：信道能通过的频率范围、信噪比 码间串扰<br><strong>理想低通信道</strong>：信号频率≤上限，则不失真<br><strong>理想带通信道</strong>：下限≤信号频率≤上限，则不失真</p>
 <p><strong>奈氏准则</strong>：<strong>理想</strong>信道极限传输速率<br>理想低通信道最高<strong>波特率</strong>=2W码元/秒，理想带通信道W码元/秒<br>比特率=波特率*log2(码元状态数)</p>
 <p><strong>信噪比</strong>：信号功率和噪声功率的比值，即S/N：<br>信噪比=</p>
@@ -359,19 +361,24 @@
 </ul>
 </li>
 <li>纠错码：海明码 PPT P43<ul>
-<li>信息位K，校验位r 满足 ，则可以纠错1bit<br><strong>差错检测技术</strong>：</li>
+<li>信息位K，校验位r 满足 ，则可以纠错1bit</li>
 </ul>
 </li>
-<li>前向纠错FEC：实时性好，但冗余码较多</li>
-<li>自动重发请求ARQ：设备简单，但实时性差<br>差错检测保证无比特差错，但帧传输依然可能出现<strong>帧丢失、重复、失序（无传输差错）</strong>。</li>
 </ul>
+<p><strong>差错检测技术</strong>：</p>
+<ul>
+<li>前向纠错FEC：实时性好，但冗余码较多</li>
+<li>自动重发请求ARQ：设备简单，但实时性差</li>
+</ul>
+<p>差错检测保证无比特差错，但帧传输依然可能出现<strong>帧丢失、重复、失序（无传输差错）</strong>。</p>
 <h4 id="3-2-点对点协议PPP"><a href="#3-2-点对点协议PPP" class="headerlink" title="3.2 点对点协议PPP"></a>3.2 点对点协议PPP</h4><p><strong>高级数据链路控制HDLC</strong>：ISO制定的面向比特的链路层协议。<br>采用主从结构，主站发送命令，从站响应，能实现可靠传输。</p>
 <p><strong>PPP协议</strong>：Point-to-Point Protocol<br>特点：<br>封装成帧、透明性、支持多种网络层协议、差错<strong>检测</strong>、允许身份认证、允许网络层地址协商。<br>组成：</p>
 <ul>
 <li>一个将IP数据报分装到串行链路的方法</li>
 <li>一个链路控制协议LCP 8021</li>
-<li>一套网络控制协议NCP C021<br>帧格式：7E-FF-03-协议-IP数据报-FCS(CRC)-7E<br>7E —&gt; 7D5E、7D —&gt;7D5D</li>
+<li>一套网络控制协议NCP C021</li>
 </ul>
+<p>帧格式：7E-FF-03-协议-IP数据报-FCS(CRC)-7E<br>7E —&gt; 7D5E、7D —&gt;7D5D</p>
 <h4 id="3-3-使用广播信道的数据链路层"><a href="#3-3-使用广播信道的数据链路层" class="headerlink" title="3.3 使用广播信道的数据链路层"></a>3.3 使用广播信道的数据链路层</h4><p><strong>局域网数据链路层</strong>：<br>局域网特点：网络为一个单位拥有，数据率高误码率低延时低<br>局域网优点：<strong>广播</strong>功能，<strong>便于扩展</strong>和演变，提高系统<strong>可靠性可用性</strong><br>拓扑结构：星形（集线器）、环形（干线耦合器）、总线、树形（匹配电阻）</p>
 <p><strong>媒体（介质）共享技术</strong>：<br>静态：各类信道复用技术，代价高信道利用率低<br>动态：<strong>多点接入</strong>即动态媒体接入控制（有数据就发送，发生冲突后解决冲突）</p>
 <p><strong>媒体访问控制方法</strong>：<br><em>ALOHA协议</em><br><strong>载波监听多点接入/碰撞检测CSMA/CD协议</strong>：</p>
@@ -380,8 +387,9 @@
 <li>**载波监听：发送数据前检测空闲</li>
 <li>CSMA/CD协议进行半双工通信</li>
 <li>**争用期：发送数据帧后两倍端往返时间 51.2微秒</li>
-<li>发生碰撞后采用<strong>二进制指数类型退避算法</strong><br>强化碰撞：碰撞发生后继续发送若干人为干扰信号。<br>帧间最小间隔：信道空闲后等待9.6微秒使缓存来得及清理。<br>CSMA/CD特点：先听后发、边听边发、冲突停发、随机重发。<br>以太网信道极限利用率，T0为帧发送时间。</li>
+<li>发生碰撞后采用<strong>二进制指数类型退避算法</strong> </li>
 </ul>
+<p>强化碰撞：碰撞发生后继续发送若干人为干扰信号。<br>帧间最小间隔：信道空闲后等待9.6微秒使缓存来得及清理。<br>CSMA/CD特点：先听后发、边听边发、冲突停发、随机重发。<br>以太网信道极限利用率，T0为帧发送时间。</p>
 <h4 id="3-4-以太网"><a href="#3-4-以太网" class="headerlink" title="3.4 以太网"></a>3.4 以太网</h4><p>以太网是当今局域网采用的最通用的<strong>通信协议标准</strong>。</p>
 <p><strong>以太网特点</strong>：<br>采用无连接工作方式（不建立连接直接发送数据）<br>使用曼彻斯特编码发送</p>
 <p>星形以太网10BASE-T<br>10Mbps基带双绞线，采用星型拓扑结构，中心设备为集线器</p>
@@ -646,7 +654,7 @@
 <p><strong>慢开始</strong>：<br>在报文开始发送时，cwnd初始值设置为1-4个SMSS<br>慢开始门限ssthresh：防止cwnd增长过大引起网络拥塞<br>在每收到一个新的报文段确认后，cwnd增加min（新确认字节数，SMSS）<br><em>指数级别增加直至SMSS！</em></p>
 <p>当cwnd&gt;=ssthresh时，转变使用拥塞避免算法<br><strong>拥塞避免算法</strong>：<br>每经过一个RTT就将cwnd加1，实现缓慢增长</p>
 <p>当网络产生拥塞（重传定时器超时）时，就设置<br>$ssthresh=max(frac{cwnd}{2},2)$ 和 $cwnd=1$ 并执行慢开始算法</p>
-<p><strong>快重传FR算法</strong>：<br>接收方每收到一个失序报文就立即发送确认<br>可以让发送方尽早知道发生了个别报文段的丢失，三个重复确认都收到，则很可能没有发生网络拥塞，执行快恢复算法。<br>$ cwnd=ssthresh=frac({cwnd}{2})$</p>
+<p><strong>快重传FR算法</strong>：<br>接收方每收到一个失序报文就立即发送确认<br>可以让发送方尽早知道发生了个别报文段的丢失，三个重复确认都收到，则很可能没有发生网络拥塞，执行快恢复算法。<br>$ cwnd=ssthresh=frac({cwnd}{2}) $</p>
 
       
     </div>
