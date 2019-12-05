@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="Lemon&#39;s blog">
 <meta property="og:description" content="第一章 概述1.1 计算机网络（网络）计算机网络：通用的、可编程的硬件互连而成，可用于不同目的，适应日益增长应用。三大网络：电信网络、有线电视网络、计算机网络（三网融合）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-05T02:58:34.230Z">
+<meta property="og:updated_time" content="2019-12-05T03:21:37.015Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2019/12/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%A4%8D%E4%B9%A0%E5%A4%A7%E7%BA%B2/">
@@ -205,7 +205,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-05 10:58:34" itemprop="dateModified" datetime="2019-12-05T10:58:34+08:00">2019-12-05</time>
+                <time title="修改时间：2019-12-05 11:21:37" itemprop="dateModified" datetime="2019-12-05T11:21:37+08:00">2019-12-05</time>
               </span>
 
           
@@ -311,7 +311,7 @@
 <p><strong>信道的极限容量</strong>：<br>限制因素：信道能通过的频率范围、信噪比 码间串扰<br><strong>理想低通信道</strong>：信号频率≤上限，则不失真<br><strong>理想带通信道</strong>：下限≤信号频率≤上限，则不失真</p>
 <p><strong>奈氏准则</strong>：<strong>理想</strong>信道极限传输速率<br>理想低通信道最高<strong>波特率</strong>=2W码元/秒，理想带通信道W码元/秒<br>比特率=波特率*log2(码元状态数)</p>
 <p><strong>信噪比</strong>：信号功率和噪声功率的比值，即S/N：<br>信噪比= $ 10 \log_{10} \left( \frac{S}{N} \right) $</p>
-<p><strong>香农公式</strong>：信道极限传输速率：</p>
+<p><strong>香农公式</strong>：信道极限传输速率：<br>$ C = W \log_2 \left( 1 + \frac{S}{N} \right) $</p>
 <p>提高传输速率的方法：提高频带宽度，提升信噪比，提升每个码元携带的信息量。</p>
 <h4 id="2-3-物理层下面的传输媒体"><a href="#2-3-物理层下面的传输媒体" class="headerlink" title="2.3 物理层下面的传输媒体"></a>2.3 物理层下面的传输媒体</h4><p><strong>传输媒体</strong>：数据传输系统中在发送器和接收器之间的物理通路</p>
 <p><strong>导引型传输媒体</strong>：电磁波沿固体媒体传播（铜线、光纤）</p>
@@ -358,7 +358,7 @@
 <li>字节计数法：在帧头设置一个长度域，放置该帧的字节数,当长度域出错，帧完全失去同步，很少单独使用</li>
 <li>字符填充法：使用特殊ASCII码最为帧定界符（透明传输问题）</li>
 <li>比特填充法：使用连续比特填充，通用性更强（透明传输问题）</li>
-<li>违法编码法：使用物理介质上冗余码字定界,如曼彻斯特编码中“低-低”电平</li>
+<li>违法编码法：使用物理介质上冗余码字定界，如曼彻斯特编码中“低-低”电平</li>
 </ul>
 <p><strong>透明传输</strong></p>
 <p><strong>差错检测：P74</strong><br>帧检测序列FCS<br>码距（海明距离）：编码系统中任意两个码字的最小距离。<br>d个比特差错，检测码距d+1，纠正码距2d+1<br><strong>差错编码技术</strong>：</p>
@@ -369,7 +369,7 @@
 </ul>
 </li>
 <li>纠错码：海明码 PPT P43<ul>
-<li>信息位K，校验位r 满足 ，则可以纠错1bit</li>
+<li>信息位K，校验位r满足 $ 2^r - 1 \geq K + r $ ，则可以纠错1bit</li>
 </ul>
 </li>
 </ul>
@@ -395,9 +395,9 @@
 <li><strong>载波监听：发送数据前检测空闲</strong></li>
 <li>CSMA/CD协议进行半双工通信</li>
 <li><strong>争用期：发送数据帧后两倍端往返时间 51.2微秒</strong></li>
-<li>发生碰撞后采用<strong>二进制指数类型退避算法</strong> </li>
+<li>发生碰撞后采用<strong>二进制指数类型退避算法</strong> $ rand \left( 0 , 2^k - 1 \right) \cdot 2 \tau $</li>
 </ul>
-<p>强化碰撞：碰撞发生后继续发送若干人为干扰信号。<br>帧间最小间隔：信道空闲后等待9.6微秒使缓存来得及清理。<br>CSMA/CD特点：先听后发、边听边发、冲突停发、随机重发。<br>以太网信道极限利用率，T0为帧发送时间。</p>
+<p>强化碰撞：碰撞发生后继续发送若干人为干扰信号。<br>帧间最小间隔：信道空闲后等待9.6微秒使缓存来得及清理。<br>CSMA/CD特点：先听后发、边听边发、冲突停发、随机重发。<br>以太网信道极限利用率 $ S_{\max} = \frac{T_0}{T_0 + \tau} $ ，$ T_0 $ 为帧发送时间。</p>
 <h4 id="3-4-以太网"><a href="#3-4-以太网" class="headerlink" title="3.4 以太网"></a>3.4 以太网</h4><p>以太网是当今局域网采用的最通用的<strong>通信协议标准</strong>。</p>
 <p><strong>以太网特点</strong>：<br>采用无连接工作方式（不建立连接直接发送数据）<br>使用曼彻斯特编码发送</p>
 <p>星形以太网10BASE-T<br>10Mbps基带双绞线，采用星型拓扑结构，中心设备为集线器</p>
@@ -518,21 +518,17 @@
 <li><strong>路由信息协议RIP</strong>：通过路由器数目最少<ul>
 <li>距离16表示不可达</li>
 <li>只保存一条路由，跳数为唯一评判标准</li>
-<li><strong><em>距离向量算法</em></strong></li>
-<li>RIP特点：</li>
+<li><strong><em>距离向量算法</em></strong><br>RIP特点：</li>
 <li>仅和相邻路由器交换信息</li>
 <li>交换全部信息（即自己的路由表）</li>
-<li>定期交换路由信息</li>
-<li>优点：简单开销小；缺点：坏消息传播的慢</li>
-<li><em>使用RIP2报文</em></li>
+<li>定期交换路由信息<br>优点：简单开销小；缺点：坏消息传播的慢<br><em>使用RIP2报文</em></li>
 </ul>
 </li>
 <li>开放最短路径优先OSPF：最短路径优先<ul>
 <li>采用分布式的链路状态协议</li>
 <li>采用<strong><em>洪泛法</em></strong>：每个路由器和相邻路由器交换链路状态</li>
 <li>直接使用IP数据报发送</li>
-<li>分类：问候、数据库描述、链路状态请求、链路状态更新、链路状态确认</li>
-<li>优点：收敛速度快，能用于大规模网络</li>
+<li>分类：问候、数据库描述、链路状态请求、链路状态更新、链路状态确认<br>优点：收敛速度快，能用于大规模网络</li>
 </ul>
 </li>
 </ul>
@@ -617,14 +613,14 @@
 <li>客户：ACK=1，seq=u+1，ack=w+1</li>
 </ul>
 <p>TCP连接必须经过两倍<strong>最长报文段寿命（MSL）</strong>后才真正释放<br>为了保证A的ACK报文到达B，并防止已失效的连接请求已经消失</p>
-<h4 id="5-4-TCP可靠传输的实现"><a href="#5-4-TCP可靠传输的实现" class="headerlink" title="5.4  TCP可靠传输的实现"></a>5.4  TCP可靠传输的实现</h4><p><strong>停止等待协议</strong>：发送完一个分组就停止发送等待确认<br>一旦出现传输差错（检测差错被丢弃或丢失），则<strong>超时重传</strong><br><strong>确认丢失</strong>：A重传，B丢弃，并再次确认<br><strong>确认迟到</strong>：A（已）重传，A丢弃，B丢弃，并再次确认<br>信道利用率计算</p>
+<h4 id="5-4-TCP可靠传输的实现"><a href="#5-4-TCP可靠传输的实现" class="headerlink" title="5.4  TCP可靠传输的实现"></a>5.4  TCP可靠传输的实现</h4><p><strong>停止等待协议</strong>：发送完一个分组就停止发送等待确认<br>一旦出现传输差错（检测差错被丢弃或丢失），则<strong>超时重传</strong><br><strong>确认丢失</strong>：A重传，B丢弃，并再次确认<br><strong>确认迟到</strong>：A（已）重传，A丢弃，B丢弃，并再次确认<br>信道利用率 $ U = \frac{T_D}{T_D + RTT + T_A} $</p>
 <p><strong>自动重传请求ARQ</strong>：<br>使用确认和重传机制，就可以在不可靠的传输网络上实现可靠通信</p>
 <p><strong>连续ARQ协议</strong>：<br>发送方每收到一个确认，就把发送窗口向前滑动一个分组位置<br>累计确认：对按序到达的最后一个分组发送确认</p>
 <ul>
 <li>优点：容易实现，即使确认丢失也不必重传（因为后续确认已经发送）</li>
 <li>缺点：不能向发送方反映所有正确收到的分组（回退），序号位数多，重传代价高</li>
 </ul>
-<p>n比特分组编号，则发送窗口和接收窗口大小满足<br>小窗口ARQ信道利用率 ，大窗口信道利用率为1<br>通常连续ARQ的接收窗口大小Wr为1</p>
+<p>n比特分组编号，则发送窗口和接收窗口大小满足 $ W_r + W_R \leq 2^n $<br>小窗口ARQ信道利用率 $ U = \frac{n \cdot T_D}{T_D + RTT + T_A} $ ，大窗口信道利用率为1<br>通常连续ARQ的接收窗口大小 $ W_r $ 为1</p>
 <p><strong>滑动窗口协议</strong>：停等协议和ARQ协议的折衷</p>
 <ul>
 <li>允许发送方连续发送多个分组而不需要等待应答</li>
@@ -635,9 +631,8 @@
 <p>发送缓存存储：准备发送但尚未发送的TCP数据、已经发送但<strong>未确认的数据</strong><br>接收缓存存储：按序到达但尚未被读取的TCP数据、<strong>未按序到达的数据</strong></p>
 <p><strong>TCP超时重传时间设置</strong>：<br>运输层RTT（往返时间）方差很大<br>如果时长设置太短，就会引起太多不必要的重传，网络负荷增大<br>如果时长设置太长，则空闲时间增大，降低了传输效率</p>
 <p>TCP采用自适应算法，记录报文发出时间和收到确认的时间（RTT）</p>
-<p><strong>加权平均往返时间</strong>:</p>
-<p><strong>超时重传时间RTO</strong>：</p>
-<p>Karn算法：报文一旦重传，不计入RTT计算<br>修正的Karn算法：一旦发生重传，RTO翻倍；否则正常更新RTO</p>
+<p><strong>加权平均往返时间</strong>:<br>$ RTT_S= \left( 1 - \alpha \right) RTT_{S,previous} + \alpha RTT_{current} $</p>
+<p><strong>超时重传时间RTO</strong>：<br>$ RTO = RTT_S + 4 RTT_D $<br>其中，RTTD为RTT的偏差加权平均值：<br>$ RTT_D = \left( 1 - \beta \right) RTT_{D,previous} + \beta \left| RTT_S - RTT_{current} \right| $<br>Karn算法：报文一旦重传，不计入RTT计算<br>修正的Karn算法：一旦发生重传，RTO翻倍；否则正常更新RTO</p>
 <p><strong>选择确认SACK</strong>：selective ACK<br>在TCP首部加上允许SACK选项，首部选项长度40字节，指明首部需要4字节<br>左闭右开存放已经收到的分组</p>
 <h4 id="5-5-TCP的流量控制"><a href="#5-5-TCP的流量控制" class="headerlink" title="5.5  TCP的流量控制"></a>5.5  TCP的流量控制</h4><p><strong>流量控制</strong>：<br>让发送方的发送速率不要太快，既要让接收方来得及接收，也不要使网络发生拥塞</p>
 <p><strong>利用可变窗口进行流量控制</strong>：<br>在发送端ACK中添加<strong>接收窗口rwnd</strong>告知大小，即可实现流量控制</p>
@@ -658,11 +653,11 @@
 <li>超时重传分组数</li>
 <li>平均分组时延与标准差</li>
 </ul>
-<p><strong>TCP拥塞控制方法</strong>：基于窗口的方法，属于闭环控制法<br>除了接收窗口，TCP发送方还维持<strong>拥塞窗口cwnd</strong><br>真正的发送窗口值 $min(rwnd,cwnd)$<br><strong>拥塞判断：重传定时器超时、收到三个重复的ACK</strong><br>TCP四种拥塞控制方法：慢开始、拥塞避免、快重传、快恢复</p>
+<p><strong>TCP拥塞控制方法</strong>：基于窗口的方法，属于闭环控制法<br>除了接收窗口，TCP发送方还维持<strong>拥塞窗口cwnd</strong><br>真正的发送窗口值 $\min \left( rwnd , cwnd \right) $<br><strong>拥塞判断：重传定时器超时、收到三个重复的ACK</strong><br>TCP四种拥塞控制方法：慢开始、拥塞避免、快重传、快恢复</p>
 <p><strong>慢开始</strong>：<br>在报文开始发送时，cwnd初始值设置为1-4个SMSS<br>慢开始门限ssthresh：防止cwnd增长过大引起网络拥塞<br>在每收到一个新的报文段确认后，cwnd增加min（新确认字节数，SMSS）<br><em>指数级别增加直至SMSS！</em></p>
 <p>当 $cwnd \geq ssthresh$ 时，转变使用拥塞避免算法<br><strong>拥塞避免算法</strong>：<br>每经过一个RTT就将cwnd加1，实现缓慢增长</p>
-<p>当网络产生拥塞（重传定时器超时）时，就设置<br>$ssthresh=max(frac{cwnd}{2},2)$ 和 $cwnd=1$ 并执行慢开始算法</p>
-<p><strong>快重传FR算法</strong>：<br>接收方每收到一个失序报文就立即发送确认<br>可以让发送方尽早知道发生了个别报文段的丢失，三个重复确认都收到，则很可能没有发生网络拥塞，执行快恢复算法。<br>$ cwnd=ssthresh=frac({cwnd}{2}) $</p>
+<p>当网络产生拥塞（重传定时器超时）时，就设置<br>$ssthresh=\max\left(frac{cwnd}{2},2\right)$ 和 $cwnd=1$ 并执行慢开始算法</p>
+<p><strong>快重传FR算法</strong>：<br>接收方每收到一个失序报文就立即发送确认<br>可以让发送方尽早知道发生了个别报文段的丢失，三个重复确认都收到，则很可能没有发生网络拥塞，执行快恢复算法。<br>$ cwnd=ssthresh=\frac{cwnd}{2} $</p>
 
     </div>
 
