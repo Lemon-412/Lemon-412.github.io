@@ -56,7 +56,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;20200124_1.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;20200124_2.png">
-<meta property="og:updated_time" content="2020-01-24T05:27:43.536Z">
+<meta property="og:updated_time" content="2020-01-24T05:36:50.597Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;20200124_1.jpg">
 
@@ -209,7 +209,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-01-24 12:29:42 / 修改时间：13:27:43" itemprop="dateCreated datePublished" datetime="2020-01-24T12:29:42+08:00">2020-01-24</time>
+              <time title="创建时间：2020-01-24 12:29:42 / 修改时间：13:36:50" itemprop="dateCreated datePublished" datetime="2020-01-24T12:29:42+08:00">2020-01-24</time>
             </span>
 
           
@@ -234,8 +234,9 @@
 </ul>
 <h4 id="1-SSH报错REMOTE-HOST-IDENTIFICATION-HAS-CHANGED"><a href="#1-SSH报错REMOTE-HOST-IDENTIFICATION-HAS-CHANGED" class="headerlink" title="1. SSH报错REMOTE HOST IDENTIFICATION HAS CHANGED"></a>1. SSH报错REMOTE HOST IDENTIFICATION HAS CHANGED</h4><p><img src="/imgs/20200124_1.jpg" /><br>这是由于重装服务器更换Unbuntu18.04后再次SSH同一个IP地址造成的安全警告，只需删除相应的host记录即可（即图中host key文件目录下的known_hosts文件）<br>另外，重装系统会使某ID和PORT发生改变，配置json时踩了坑debug了好久。</p>
 <h4 id="2-远程报错Failed-to-fetch-release-information-Please-check-your-network-and-try-again"><a href="#2-远程报错Failed-to-fetch-release-information-Please-check-your-network-and-try-again" class="headerlink" title="2. 远程报错Failed to fetch release information. Please check your network and try again."></a>2. 远程报错Failed to fetch release information. Please check your network and try again.</h4><p><img src="/imgs/20200124_2.png" /><br>玄学问题，ssh连得上，ping某G网站也通，apt-get update也完全ok，但运行bash就是不行（即使本地拉过去也不行）。<br>后续更换了支持ipv4的服务器就没有出现过相关问题。<del>v某r</del>是按小时收费的，很贴心。只花了一美分就退掉了服务器。</p>
-<h4 id="3-本地Chrome浏览器无法正常访问，Edge却可以"><a href="#3-本地Chrome浏览器无法正常访问，Edge却可以" class="headerlink" title="3. 本地Chrome浏览器无法正常访问，Edge却可以"></a>3. 本地Chrome浏览器无法正常访问，Edge却可以</h4><p>这似乎是由于Chrome走的路线和其他软件不太一样，不走系统<del>某理</del>，需要额外安装插件，如<del>S某a</del>。<br>走<del>S某技术5</del>到127.0.0.1:1080或走<del>H某技术L</del>到127.0.0.1:8080，并启用相应模式即可。</p>
+<h4 id="3-本地Chrome浏览器无法正常访问，Edge却可以"><a href="#3-本地Chrome浏览器无法正常访问，Edge却可以" class="headerlink" title="3. 本地Chrome浏览器无法正常访问，Edge却可以"></a>3. 本地Chrome浏览器无法正常访问，Edge却可以</h4><p>这似乎是由于Chrome走的路线和其他软件不太一样，不走系统<del>某理</del>，需要额外安装插件，如<del>S某a</del>。<br>如果安装相应crx出现问题，可以修改后缀为.zip解包后载入。<br>走<del>S某技术5</del>到127.0.0.1:1080或走<del>H某技术L</del>到127.0.0.1:8080，并启用相应模式即可。</p>
 <h4 id="4-频繁出现网站意外终止连接，和503报错"><a href="#4-频繁出现网站意外终止连接，和503报错" class="headerlink" title="4. 频繁出现网站意外终止连接，和503报错"></a>4. 频繁出现网站意外终止连接，和503报错</h4><p>网络时好时坏，好的时候一切正常，但有大约三分之一的概率打不开网站，Chrome报网站意外终止连接，或503 Service Unavailable，很短一段时间后又恢复正常。<br>后续检查发现是alterid近远端不匹配产生的问题，将alterid设置为正确的64重启电脑即可。</p>
+<p>除去以上问题，大多数问题都能搜索到相应的解决办法。<br>整体来说，搭建服务器比搭hexo博客要省心一点，很多流程都已经自动化实现了。</p>
 
     </div>
 
