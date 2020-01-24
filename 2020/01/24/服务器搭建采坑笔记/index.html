@@ -56,7 +56,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;20200124_1.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;20200124_2.png">
-<meta property="og:updated_time" content="2020-01-24T05:21:51.030Z">
+<meta property="og:updated_time" content="2020-01-24T05:27:43.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;20200124_1.jpg">
 
@@ -209,7 +209,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-01-24 12:29:42 / 修改时间：13:21:51" itemprop="dateCreated datePublished" datetime="2020-01-24T12:29:42+08:00">2020-01-24</time>
+              <time title="创建时间：2020-01-24 12:29:42 / 修改时间：13:27:43" itemprop="dateCreated datePublished" datetime="2020-01-24T12:29:42+08:00">2020-01-24</time>
             </span>
 
           
@@ -225,17 +225,17 @@
       
         <p>基于<del>V某技术y</del>的服务器搭建采坑笔记</p>
 <a id="more"></a>
-<p>date: 2020-01-24<br>背景：目前<del>S某技术S</del>以及<del>S某技术R</del>负责人已经被请去喝汤停止维护相关项目。<br>导火索：去年国庆期间自己因为太浪被多次ban掉IP和端口，一直临时借用室友的同技术产品，但流速低到吓人，打开某G搜索网站需要2秒以上的时间。<br>又由于对某G网站的需要和对大千世界的好奇，并为今后可能到来的某G公司面试做好准备，拥有更高安全系数的<del>V某技术y</del>就进入视线了。</p>
-<p>在编写本博客时，我牢记以下几点：</p>
+<p><strong>date</strong>: 2020-01-24<br><strong>背景</strong>：目前<del>S某技术S</del>以及<del>S某技术R</del>负责人已经被请去喝汤停止维护相关项目。<br><strong>导火索</strong>：去年国庆期间自己因为太浪被多次ban掉IP和端口，一直临时借用室友的同技术产品，但流速低到吓人，打开某G搜索网站需要2秒以上的时间。<br>又由于对某G网站的需要和对大千世界的好奇，并为今后可能到来的某G公司面试做好准备，拥有更高安全系数的<del>V某技术y</del>就进入视线了。</p>
+<p><strong>在编写本博客时，我牢记以下几点</strong>：</p>
 <ul>
 <li>热爱学习，热爱祖国，怀揣好奇的心，探索未知的世界</li>
 <li>服务器只供个人学习生活使用，不超出个人日常使用，不谋取任何利益</li>
 <li>不交流、不传播相应技术；不出租、出售相应产品，不谋取任何利益</li>
 </ul>
-<h3 id="SSH报错REMOTE-HOST-IDENTIFICATION-HAS-CHANGED"><a href="#SSH报错REMOTE-HOST-IDENTIFICATION-HAS-CHANGED" class="headerlink" title="SSH报错REMOTE HOST IDENTIFICATION HAS CHANGED"></a>SSH报错REMOTE HOST IDENTIFICATION HAS CHANGED</h3><p><img src="/imgs/20200124_1.jpg" width="100" height="100" /><br>这是由于重装服务器更换Unbuntu18.04后再次SSH同一个IP地址造成的安全警告，只需删除相应的host记录即可（即图中host key文件目录下的known_hosts文件）<br>另外，重装系统会使某ID和PORT发生改变，配置json时踩了坑debug了好久。</p>
-<h3 id="远程报错Failed-to-fetch-release-information-Please-check-your-network-and-try-again"><a href="#远程报错Failed-to-fetch-release-information-Please-check-your-network-and-try-again" class="headerlink" title="远程报错Failed to fetch release information. Please check your network and try again."></a>远程报错Failed to fetch release information. Please check your network and try again.</h3><p><img src="/imgs/20200124_2.png" width="100" height="100" /><br>玄学问题，ssh连得上，ping某G网站也通，apt-get update也完全ok，但运行bash就是不行（即使本地拉过去也不行）。<br>后续更换了支持ipv4的服务器就没有出现过相关问题。<del>v某r</del>是按小时收费的，很贴心。只花了一美分就退掉了服务器。</p>
-<h3 id="本地Chrome浏览器无法正常访问，Edge却可以"><a href="#本地Chrome浏览器无法正常访问，Edge却可以" class="headerlink" title="本地Chrome浏览器无法正常访问，Edge却可以"></a>本地Chrome浏览器无法正常访问，Edge却可以</h3><p>这似乎是由于Chrome走的路线和其他软件不太一样，不走系统<del>某理</del>，需要额外安装插件，如<del>S某a</del>。<br>走<del>S某技术5</del>到127.0.0.1:1080或走<del>H某技术L</del>到127.0.0.1:8080，并启用相应模式即可。</p>
-<h3 id="频繁出现网站意外终止连接，和503报错"><a href="#频繁出现网站意外终止连接，和503报错" class="headerlink" title="频繁出现网站意外终止连接，和503报错"></a>频繁出现网站意外终止连接，和503报错</h3><p>网络时好时坏，好的时候一切正常，但有大约三分之一的概率打不开网站，Chrome报网站意外终止连接，或503 Service Unavailable，很短一段时间后又恢复正常。<br>后续检查发现是alterid近远端不匹配产生的问题，后续将alterid设置为正确的64重启电脑即可。</p>
+<h4 id="1-SSH报错REMOTE-HOST-IDENTIFICATION-HAS-CHANGED"><a href="#1-SSH报错REMOTE-HOST-IDENTIFICATION-HAS-CHANGED" class="headerlink" title="1. SSH报错REMOTE HOST IDENTIFICATION HAS CHANGED"></a>1. SSH报错REMOTE HOST IDENTIFICATION HAS CHANGED</h4><p><img src="/imgs/20200124_1.jpg" /><br>这是由于重装服务器更换Unbuntu18.04后再次SSH同一个IP地址造成的安全警告，只需删除相应的host记录即可（即图中host key文件目录下的known_hosts文件）<br>另外，重装系统会使某ID和PORT发生改变，配置json时踩了坑debug了好久。</p>
+<h4 id="2-远程报错Failed-to-fetch-release-information-Please-check-your-network-and-try-again"><a href="#2-远程报错Failed-to-fetch-release-information-Please-check-your-network-and-try-again" class="headerlink" title="2. 远程报错Failed to fetch release information. Please check your network and try again."></a>2. 远程报错Failed to fetch release information. Please check your network and try again.</h4><p><img src="/imgs/20200124_2.png" /><br>玄学问题，ssh连得上，ping某G网站也通，apt-get update也完全ok，但运行bash就是不行（即使本地拉过去也不行）。<br>后续更换了支持ipv4的服务器就没有出现过相关问题。<del>v某r</del>是按小时收费的，很贴心。只花了一美分就退掉了服务器。</p>
+<h4 id="3-本地Chrome浏览器无法正常访问，Edge却可以"><a href="#3-本地Chrome浏览器无法正常访问，Edge却可以" class="headerlink" title="3. 本地Chrome浏览器无法正常访问，Edge却可以"></a>3. 本地Chrome浏览器无法正常访问，Edge却可以</h4><p>这似乎是由于Chrome走的路线和其他软件不太一样，不走系统<del>某理</del>，需要额外安装插件，如<del>S某a</del>。<br>走<del>S某技术5</del>到127.0.0.1:1080或走<del>H某技术L</del>到127.0.0.1:8080，并启用相应模式即可。</p>
+<h4 id="4-频繁出现网站意外终止连接，和503报错"><a href="#4-频繁出现网站意外终止连接，和503报错" class="headerlink" title="4. 频繁出现网站意外终止连接，和503报错"></a>4. 频繁出现网站意外终止连接，和503报错</h4><p>网络时好时坏，好的时候一切正常，但有大约三分之一的概率打不开网站，Chrome报网站意外终止连接，或503 Service Unavailable，很短一段时间后又恢复正常。<br>后续检查发现是alterid近远端不匹配产生的问题，将alterid设置为正确的64重启电脑即可。</p>
 
     </div>
 
@@ -294,7 +294,7 @@
       </ul>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH报错REMOTE-HOST-IDENTIFICATION-HAS-CHANGED"><span class="nav-text">SSH报错REMOTE HOST IDENTIFICATION HAS CHANGED</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程报错Failed-to-fetch-release-information-Please-check-your-network-and-try-again"><span class="nav-text">远程报错Failed to fetch release information. Please check your network and try again.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地Chrome浏览器无法正常访问，Edge却可以"><span class="nav-text">本地Chrome浏览器无法正常访问，Edge却可以</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#频繁出现网站意外终止连接，和503报错"><span class="nav-text">频繁出现网站意外终止连接，和503报错</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-SSH报错REMOTE-HOST-IDENTIFICATION-HAS-CHANGED"><span class="nav-text">1. SSH报错REMOTE HOST IDENTIFICATION HAS CHANGED</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-远程报错Failed-to-fetch-release-information-Please-check-your-network-and-try-again"><span class="nav-text">2. 远程报错Failed to fetch release information. Please check your network and try again.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-本地Chrome浏览器无法正常访问，Edge却可以"><span class="nav-text">3. 本地Chrome浏览器无法正常访问，Edge却可以</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-频繁出现网站意外终止连接，和503报错"><span class="nav-text">4. 频繁出现网站意外终止连接，和503报错</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
