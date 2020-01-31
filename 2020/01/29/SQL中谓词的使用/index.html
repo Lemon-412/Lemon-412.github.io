@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="Lemon&#39;s blog">
 <meta property="og:description" content="LIKE、BETWEEN、IS NULL、IS NOT NULL的使用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-28T16:35:32.650Z">
+<meta property="og:updated_time" content="2020-01-28T16:59:26.976Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/01/29/SQL%E4%B8%AD%E8%B0%93%E8%AF%8D%E7%9A%84%E4%BD%BF%E7%94%A8/">
@@ -206,7 +206,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-01-29 00:00:09 / 修改时间：00:35:32" itemprop="dateCreated datePublished" datetime="2020-01-29T00:00:09+08:00">2020-01-29</time>
+              <time title="创建时间：2020-01-29 00:00:09 / 修改时间：00:59:26" itemprop="dateCreated datePublished" datetime="2020-01-29T00:00:09+08:00">2020-01-29</time>
             </span>
 
           
@@ -225,7 +225,7 @@
 <p>在SQL中，<strong>谓词</strong>就是<strong>返回值位真值的函数</strong>。常用的谓词有LIKE、BETWEEN、IS NULL、IS NOT NULL、IN、EXISTS等。<br><em>按此定义MAX、MIN、ANY、ALL等并不能算作谓词(?)</em></p>
 <h3 id="LIKE"><a href="#LIKE" class="headerlink" title="LIKE"></a>LIKE</h3><p>LIKE子句用于模糊查询，通常与通配符连用，如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* ‘_’匹配一个字符，‘%’匹配至少一个字符</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 查询学生表中姓欧阳的学生信息</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> S </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> Sname <span class="keyword">LIKE</span> <span class="string">'欧阳%'</span>;</span></pre></td></tr></table></figure></p>
 <p>注意：在使用=替代LIKE时，通配符是不起转意作用的(即目标是“欧阳%”而非姓欧阳的人)</p>
-<h3 id="BETWEEN"><a href="#BETWEEN" class="headerlink" title="BETWEEN"></a>BETWEEN</h3><p>BETWEEN的使用可以解放连续的不等式表达式，往往和AND连用，如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 查询学号介于17100000和17120000之间的学生信息</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> S</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> Sno <span class="keyword">BETWEEN</span> <span class="number">17100000</span> <span class="keyword">AND</span> <span class="number">17120000</span></span></pre></td></tr></table></figure></p>
+<h3 id="BETWEEN"><a href="#BETWEEN" class="headerlink" title="BETWEEN"></a>BETWEEN</h3><p>BETWEEN的使用可以解放连续的不等式表达式，往往和AND连用，如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 查询学号介于17100000和17120000之间的学生信息</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> S</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> Sno <span class="keyword">BETWEEN</span> <span class="number">17100000</span> <span class="keyword">AND</span> <span class="number">17120000</span>;</span></pre></td></tr></table></figure></p>
 <p>此外，BETWEEN还可以与NOT连用，起到取反作用。<br>注意：不同数据库对边界处理可能不一致。</p>
 <h3 id="IS-NULL、IS-NOT-NULL"><a href="#IS-NULL、IS-NOT-NULL" class="headerlink" title="IS NULL、IS NOT NULL"></a>IS NULL、IS NOT NULL</h3><p>SQL对数值和NULL的比较是不容忍的。即任何企图和NULL的比较都是False。例如以下查询均返回NULL：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="number">3</span>=<span class="literal">NULL</span>); <span class="comment">/* NULL */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="number">3</span>!=<span class="literal">NULL</span>); <span class="comment">/* NULL */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="literal">NULL</span>=<span class="literal">NULL</span>); <span class="comment">/* NULL */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="keyword">NOT</span> <span class="literal">NULL</span>=<span class="literal">NULL</span>); <span class="comment">/* NULL */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="keyword">NOT</span> <span class="literal">NULL</span>!=<span class="literal">NULL</span>); <span class="comment">/* NULL */</span></span></pre></td></tr></table></figure><br>要返回真值，应该使用IS NULL 或 IS NOT NULL，如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="number">3</span> <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>); <span class="comment">/* 1 */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="literal">NULL</span> <span class="keyword">IS</span> <span class="literal">NULL</span>); <span class="comment">/* 1 */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>((<span class="literal">NULL</span>=<span class="literal">NULL</span>) <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>); <span class="comment">/* 0 */</span></span></pre></td></tr></table></figure></p>
 
@@ -249,7 +249,10 @@
     <a href="/2020/01/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E9%87%87%E5%9D%91%E7%AC%94%E8%AE%B0/" rel="prev" title="服务器搭建采坑笔记">
       <i class="fa fa-chevron-left"></i> 服务器搭建采坑笔记
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/01/31/%E7%88%AC%E5%8F%96%E5%A4%96%E6%A0%A1%E6%95%99%E5%8A%A1%E5%A4%84%E6%88%90%E7%BB%A9%E5%8D%95/" rel="next" title="爬取外校教务处成绩单">
+      爬取外校教务处成绩单 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -302,14 +305,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

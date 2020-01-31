@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="相比于外校，我校的教务处简直弱不禁风…">
+<meta name="keywords" content="爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬取外校教务处成绩单">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;31&#x2F;%E7%88%AC%E5%8F%96%E5%A4%96%E6%A0%A1%E6%95%99%E5%8A%A1%E5%A4%84%E6%88%90%E7%BB%A9%E5%8D%95&#x2F;index.html">
+<meta property="og:site_name" content="Lemon&#39;s blog">
+<meta property="og:description" content="相比于外校，我校的教务处简直弱不禁风…">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;20200131_1.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;20200131_2.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;20200131_3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;20200131_4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;20200131_5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;20200131_6.png">
+<meta property="og:updated_time" content="2020-01-31T07:23:11.315Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;20200131_1.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2020/01/31/%E7%88%AC%E5%8F%96%E5%A4%96%E6%A0%A1%E6%95%99%E5%8A%A1%E5%A4%84%E6%88%90%E7%BB%A9%E5%8D%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>爬取外校教务处成绩单 | Lemon's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lemon's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>日志</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/lemon-412" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/31/%E7%88%AC%E5%8F%96%E5%A4%96%E6%A0%A1%E6%95%99%E5%8A%A1%E5%A4%84%E6%88%90%E7%BB%A9%E5%8D%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Lemon.jpg">
+      <meta itemprop="name" content="Lemon Qin">
+      <meta itemprop="description" content="愿我在未来的几年内，不要因为走得太远，忘记自己为什么出发">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemon's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          爬取外校教务处成绩单
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-31 12:50:05 / 修改时间：15:23:11" itemprop="dateCreated datePublished" datetime="2020-01-31T12:50:05+08:00">2020-01-31</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>相比于外校，我校的教务处简直弱不禁风…</p>
+<a id="more"></a>
+<p><em>出于对网站的保护，本文略去了所有关于被爬网站的连接，以及一些关键步骤</em></p>
+<h3 id="0-爬虫的自我修养"><a href="#0-爬虫的自我修养" class="headerlink" title="0. 爬虫的自我修养"></a>0. 爬虫的自我修养</h3><p>对爬虫重新拾起兴趣，主要还是因为无意间翻到了<a href="https://www.cnblogs.com/junrong624/p/5533655.html" target="_blank" rel="noopener">这篇博客</a>。<br>里面对爬虫和反爬虫和反反爬虫都有一些介绍，看得很热血。</p>
+<p>有理由相信，一个正常用户能够正常访问的网站（反例：12306），基本上都可以使用爬虫爬取。<br>一些所谓的加密手段，实际上都是一种自卖自夸，无非是和定向爬虫在玩捉迷藏而已。<br>当然，滑块等新型图灵测试还是有一定防守价值的。</p>
+<p>爬虫的自我修养：</p>
+<ul>
+<li>不爬取正常用户无法得到的数据和其他敏感数据</li>
+<li>不妨碍网站的正常运行，不攻击远程服务器</li>
+</ul>
+<p>爬虫的简单伪装：</p>
+<ul>
+<li>伪装request header，例如使用和本地浏览器一样的header</li>
+<li>使用<code>time.sleep(random.randrange())</code>模仿人类访问网站</li>
+</ul>
+<h3 id="1-自动登录的实现"><a href="#1-自动登录的实现" class="headerlink" title="1. 自动登录的实现"></a>1. 自动登录的实现</h3><p>与我校弱鸡sso明文登录的体质不一样的是，目标系统的登录post请求的password项是动态加密的。<br>某次登录的表单如下：<br><img src="/imgs/20200131_1.jpg"></p>
+<p>但在下一次登录中，又变成了这样：<br><img src="/imgs/20200131_2.jpg"></p>
+<p>观察到login action里有一个动态的magic string：<br><img src="/imgs/20200131_3.png"></p>
+<p>追根溯源找到SHA加密的JS文件：<br><img src="/imgs/20200131_4.png"></p>
+<p>由此可以猜测服务器保存了用户密码的明文，并通过随机生成magic string和不对称加密技术校验密文是否匹配。这种加密方式保护了密码的明文在网络的传播过程中不会暴露。<br>显然SHA加密代码有比较强的混淆性（至少对我这种不会JS的来说比较难读懂），但我们也不需要理解加密是如何完成的，只需要调用接口就行了。<br>在JS文件后追加函数，并调用Python中execjs库执行<code>gao(magic_string+self.password)</code>即可。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gao</span>(<span class="params">rua</span>)</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">return</span> <span class="built_in">String</span>(CryptoJS.SHA1(rua))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure></p>
+<p>这里有个有趣的现象：为了得到<code>func_A(fun_B(c))</code>的效果，本来可以用分治的方法依次执行，<br>但似乎由于execjs在返回类型的时候必须和Python对接导致一些复杂的类型结构发生变化，而产生不符合预期的结果。<br>因此最后还是选择在JS中追加函数实现相应效果。让参数的传递只发生在JS内部。</p>
+<p>此外，该登录系统中还有一些坑，会导致即使调用了相关方法还会触发验证码机制或提示密码错误的情况。</p>
+<h3 id="2-自动查成绩脚本"><a href="#2-自动查成绩脚本" class="headerlink" title="2. 自动查成绩脚本"></a>2. 自动查成绩脚本</h3><p>在攻破登录系统后，一切都变得从心所欲起来。<br>观察到成绩查询的提交表单如下：<br><img src="/imgs/20200131_5.png"></p>
+<p>众所周知get请求的data是直接放在url里的。根据控制变量法，多次提交表格后得出结论：</p>
+<ul>
+<li>“_”项的内容为时间戳</li>
+<li>projectType、projectid项（几乎）是常数（后续找到了来源）</li>
+<li>semesterid为magic number，为静态</li>
+</ul>
+<p>本着自卖自夸精神查找数据来源，发现了另一个post中的response中有记录相应信息：<br><img src="/imgs/20200131_6.png"></p>
+<p>事实上，由于semesterid为静态，如果只需要定向爬取某一个学期的成绩，只需要写死即可。<br>但如果需要较好的封装（比如希望这个脚本可以不加完善就能爬取未来会出的成绩），那么就需要通过上述手段重定位semesterid</p>
+<p>至此自动查成绩部分也就较好的完成了。</p>
+<h3 id="3-自动发邮件"><a href="#3-自动发邮件" class="headerlink" title="3. 自动发邮件"></a>3. 自动发邮件</h3><p>学过计算机网络的同学应该都至少听说过SMTP服务。<br>这里贴一个封装好的基于腾讯QQ邮箱SMTP服务的自动发邮件代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">my_sender = <span class="string">''</span>  <span class="comment"># 发件人邮箱账号</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">my_pass = <span class="string">''</span>  <span class="comment"># 发件人邮箱口令</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">my_user = <span class="string">''</span>  <span class="comment"># 收件人邮箱账号</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mail</span><span class="params">(title, content, coding_type, retry_flag=False)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    print(<span class="string">'Mailing...'</span>, title)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">try</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">            msg = MIMEText(content, coding_type, <span class="string">'utf-8'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            msg[<span class="string">'From'</span>] = formataddr([<span class="string">'发送人昵称'</span>, my_sender])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            msg[<span class="string">'To'</span>] = formataddr([<span class="string">'收件人昵称'</span>, my_user])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">            msg[<span class="string">'Subject'</span>] = title</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">            server = smtplib.SMTP_SSL(<span class="string">'smtp.qq.com'</span>, <span class="number">465</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">            server.login(my_sender, my_pass)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">            server.sendmail(my_sender, [my_user, ], msg.as_string())</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">            server.quit()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> err:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">            print(<span class="string">'in mailing '</span>, str(err))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> retry_flag:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">break</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">            time.sleep(<span class="number">5</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">continue</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span></span></pre></td></tr></table></figure></p>
+<p>需要注意的是，发送方的邮箱口令不是邮箱密码，是开启SMTP服务后得到的key。<br><code>coding_type</code>可以选择普通文本，也可以直接用HTML发送。</p>
+<p>在这里可以直接把查询得到的HTML发送至目标邮箱即可。</p>
+<h3 id="4-后续可以完善的地方"><a href="#4-后续可以完善的地方" class="headerlink" title="4. 后续可以完善的地方"></a>4. 后续可以完善的地方</h3><ul>
+<li>更合理的登录：登录前检查页面是否出现验证码，并使用相关库识别验证码。</li>
+<li>精简邮件内容：检查爬取的成绩表单，使用相关库筛选需要的部分</li>
+<li>修改为挂机程序，每隔十分钟检查成绩单，差分后如果有变化则发送差分至邮箱。</li>
+</ul>
+<h3 id="5-基本代码框架"><a href="#5-基本代码框架" class="headerlink" title="5. 基本代码框架"></a>5. 基本代码框架</h3><p>略去了细节，只保留框架。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> execjs</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> exit</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> smtplib</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> email.utils <span class="keyword">import</span> formataddr</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">SHA_JS = <span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="string">...</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">my_sender = <span class="string">''</span>  <span class="comment"># 发件人邮箱账号</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">my_pass = <span class="string">''</span>  <span class="comment"># 发件人邮箱口令</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">my_user = <span class="string">''</span>  <span class="comment"># 收件人邮箱账号</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mail</span><span class="params">(title, content, coding_type, retry_flag=False)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">    print(<span class="string">'Mailing...'</span>, title)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">try</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">            msg = MIMEText(content, coding_type, <span class="string">'utf-8'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">            msg[<span class="string">'From'</span>] = formataddr([<span class="string">'发送人昵称'</span>, my_sender])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">            msg[<span class="string">'To'</span>] = formataddr([<span class="string">'收件人昵称'</span>, my_user])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">            msg[<span class="string">'Subject'</span>] = title</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">            server = smtplib.SMTP_SSL(<span class="string">'smtp.qq.com'</span>, <span class="number">465</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">            server.login(my_sender, my_pass)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">            server.sendmail(my_sender, [my_user, ], msg.as_string())</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">            server.quit()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> err:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">            print(<span class="string">'in mailing '</span>, str(err))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> retry_flag:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">break</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">            time.sleep(<span class="number">5</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">continue</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, username, password)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">        self.session = requests.session()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">        self.session.headers = &#123;&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">        self.username = username</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line">        self.password = password</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">        self.SHA_Hacker = execjs.compile(SHA_JS)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line">        self.salt = <span class="string">''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line">        self.data = &#123;&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(self)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">50</span></pre></td><td class="code"><pre><span class="line">		...</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">51</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> ret.text.find(<span class="string">'我的学籍'</span>) != <span class="number">-1</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">52</span></pre></td><td class="code"><pre><span class="line">            print(<span class="string">'登录成功!'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">53</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">elif</span> ret.text.find(<span class="string">'验证码不正确'</span>) != <span class="number">-1</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">54</span></pre></td><td class="code"><pre><span class="line">            print(<span class="string">'需要验证码!请五分钟后重试'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">55</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">elif</span> ret.text.find(<span class="string">'密码错误'</span>) != <span class="number">-1</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">56</span></pre></td><td class="code"><pre><span class="line">            print(<span class="string">'密码错误'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">57</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">else</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">58</span></pre></td><td class="code"><pre><span class="line">            print(ret.text)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">59</span></pre></td><td class="code"><pre><span class="line">            exit(<span class="number">0</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">60</span></pre></td><td class="code"><pre><span class="line">        time.sleep(<span class="number">2</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">61</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">62</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">63</span></pre></td><td class="code"><pre><span class="line">        ...</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">64</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> ret.text.find(<span class="string">'课程英文名称'</span>) == <span class="number">-1</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">65</span></pre></td><td class="code"><pre><span class="line">            print(<span class="string">'查成绩失败'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">66</span></pre></td><td class="code"><pre><span class="line">            exit(<span class="number">0</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">67</span></pre></td><td class="code"><pre><span class="line">        mail(<span class="string">'成绩单'</span>, ret.text, <span class="string">'html'</span>, <span class="literal">True</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">68</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">69</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">70</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">71</span></pre></td><td class="code"><pre><span class="line">    x = Client(<span class="string">'username'</span>, <span class="string">'password'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">72</span></pre></td><td class="code"><pre><span class="line">    x.login()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">73</span></pre></td><td class="code"><pre><span class="line">    x.run()</span></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"># 爬虫</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/29/SQL%E4%B8%AD%E8%B0%93%E8%AF%8D%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="prev" title="SQL中谓词的使用">
+      <i class="fa fa-chevron-left"></i> SQL中谓词的使用
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-爬虫的自我修养"><span class="nav-text">0. 爬虫的自我修养</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-自动登录的实现"><span class="nav-text">1. 自动登录的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-自动查成绩脚本"><span class="nav-text">2. 自动查成绩脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-自动发邮件"><span class="nav-text">3. 自动发邮件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-后续可以完善的地方"><span class="nav-text">4. 后续可以完善的地方</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-基本代码框架"><span class="nav-text">5. 基本代码框架</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lemon Qin"
+      src="/images/Lemon.jpg">
+  <p class="site-author-name" itemprop="name">Lemon Qin</p>
+  <div class="site-description" itemprop="description">愿我在未来的几年内，不要因为走得太远，忘记自己为什么出发</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lemon-412" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lemon-412" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lemon412@foxmail.com" title="E-Mail → mailto:lemon412@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+<!--<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=473928488&auto=1&height=32"></iframe>-->
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lemon Qin</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
