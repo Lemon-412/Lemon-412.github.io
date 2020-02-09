@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="Lemon&#39;s blog">
 <meta property="og:description" content="第一章 概述1.1 计算机网络（网络）计算机网络：通用的、可编程的硬件互连而成，可用于不同目的，适应日益增长应用。三大网络：电信网络、有线电视网络、计算机网络（三网融合）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-28T15:59:25.323Z">
+<meta property="og:updated_time" content="2020-02-09T04:34:58.302Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2019/12/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%A4%8D%E4%B9%A0%E5%A4%A7%E7%BA%B2/">
@@ -212,10 +212,17 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-28 23:59:25" itemprop="dateModified" datetime="2020-01-28T23:59:25+08:00">2020-01-28</time>
+                <time title="修改时间：2020-02-09 12:34:58" itemprop="dateModified" datetime="2020-02-09T12:34:58+08:00">2020-02-09</time>
               </span>
 
           
+            <span id="/2019/12/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%A4%8D%E4%B9%A0%E5%A4%A7%E7%BA%B2/" class="post-meta-item leancloud_visitors" data-flag-title="计算机网络复习大纲" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
 
         </div>
       </header>
@@ -639,10 +646,8 @@
 <p><strong>TCP超时重传时间设置</strong>：<br>运输层RTT（往返时间）方差很大<br>如果时长设置太短，就会引起太多不必要的重传，网络负荷增大<br>如果时长设置太长，则空闲时间增大，降低了传输效率</p>
 <p>TCP采用自适应算法，记录报文发出时间和收到确认的时间（RTT）</p>
 <p><strong>加权平均往返时间</strong>:</p>
-<script type="math/tex; mode=display">RTT_S= \left( 1 - \alpha \right) RTT_{S,previous} + \alpha RTT_{current} $
-
-**超时重传时间RTO**：
-$$ RTO = RTT_S + 4 RTT_D</script><p>其中，RTTD为RTT的偏差加权平均值：</p>
+<script type="math/tex; mode=display">RTT_S= \left( 1 - \alpha \right) RTT_{S,previous} + \alpha RTT_{current}</script><p><strong>超时重传时间RTO</strong>：</p>
+<script type="math/tex; mode=display">RTO = RTT_S + 4 RTT_D</script><p>其中，RTTD为RTT的偏差加权平均值：</p>
 <script type="math/tex; mode=display">RTT_D = \left( 1 - \beta \right) RTT_{D,previous} + \beta \left| RTT_S - RTT_{current} \right|</script><p>Karn算法：报文一旦重传，不计入RTT计算<br>修正的Karn算法：一旦发生重传，RTO翻倍；否则正常更新RTO</p>
 <p><strong>选择确认SACK</strong>：selective ACK<br>在TCP首部加上允许SACK选项，首部选项长度40字节，指明首部需要4字节<br>左闭右开存放已经收到的分组</p>
 <h4 id="5-5-TCP的流量控制"><a href="#5-5-TCP的流量控制" class="headerlink" title="5.5  TCP的流量控制"></a>5.5  TCP的流量控制</h4><p><strong>流量控制</strong>：<br>让发送方的发送速率不要太快，既要让接收方来得及接收，也不要使网络发生拥塞</p>
@@ -801,6 +806,94 @@ $$ RTO = RTT_S + 4 RTT_D</script><p>其中，RTTD为RTT的偏差加权平均值�
 
 
 
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=YWR6nguyS1USRKAKjL9S1bHy-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': 'YWR6nguyS1USRKAKjL9S1bHy-gzGzoHsz',
+            'X-LC-Key': 'ysyi987IaRFi7aP771rfrPqy',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
 
 
         
