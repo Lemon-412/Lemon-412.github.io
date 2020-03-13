@@ -47,14 +47,14 @@
 </script>
 
   <meta name="description" content="MySQL自带了很多字符串处理、日期处理等函数，以及if expression等…">
-<meta name="keywords" content="SQL">
+<meta name="keywords" content="Leetcode,SQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL 常用函数">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;13&#x2F;MySQL-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0&#x2F;index.html">
 <meta property="og:site_name" content="Lemon&#39;s blog">
 <meta property="og:description" content="MySQL自带了很多字符串处理、日期处理等函数，以及if expression等…">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-13T07:22:50.672Z">
+<meta property="og:updated_time" content="2020-03-13T08:29:00.443Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/03/13/MySQL-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">
@@ -206,7 +206,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-13 13:54:04 / 修改时间：15:22:50" itemprop="dateCreated datePublished" datetime="2020-03-13T13:54:04+08:00">2020-03-13</time>
+              <time title="创建时间：2020-03-13 13:54:04 / 修改时间：16:29:00" itemprop="dateCreated datePublished" datetime="2020-03-13T13:54:04+08:00">2020-03-13</time>
             </span>
 
           
@@ -237,14 +237,20 @@
 <h3 id="高级函数"><a href="#高级函数" class="headerlink" title="高级函数"></a>高级函数</h3><ul>
 <li><p><code>if(expr,v1,v2)</code>：expr?v1:v2</p>
 </li>
-<li><p><code>ifnull(expr,v1,v2)</code>：<code>if(v1 is not null,v1,v2)</code></p>
+<li><p><code>ifnull(expr,v)</code>：<code>if(expr is null,v,expr)</code></p>
 </li>
-<li><p><code>nullif(expr1,exor2)</code>：<code>if(expr1=expr2,null,expr1)</code></p>
+<li><p><code>nullif(expr1,expr2)</code>：<code>if(expr1=expr2,null,expr1)</code></p>
 </li>
 <li><p><code>CASE expression</code>：switch表达式，自带break</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">CASE expression</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    WHEN condition1 THEN result1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    WHEN condition2 THEN result2</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">   ...</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    WHEN conditionN THEN resultN</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    ELSE result</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">END</span></pre></td></tr></table></figure>
 </li>
 </ul>
+<hr>
+<p><strong>例题</strong>：<a href="https://leetcode-cn.com/problems/market-analysis-i/" target="_blank" rel="noopener">Leetcode 1158.市场分析 I</a></p>
+<p>给定两个表Users和Orders，为每一位注册用户统计它在2019年的订单数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Users table:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">+---------+------------+----------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">| user_id | join_date  | favorite_brand |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">+---------+------------+----------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">| 1       | 2018-01-01 | Lenovo         |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">| 2       | 2018-02-09 | Samsung        |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">| 3       | 2018-01-19 | LG             |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">| 4       | 2018-05-21 | HP             |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">+---------+------------+----------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">Orders table:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">+----------+------------+---------+----------+-----------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">| order_id | order_date | item_id | buyer_id | seller_id |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">+----------+------------+---------+----------+-----------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">| 1        | 2019-08-01 | 4       | 1        | 2         |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">| 2        | 2018-08-02 | 2       | 1        | 3         |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">| 3        | 2019-08-03 | 3       | 2        | 3         |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">| 4        | 2018-08-04 | 1       | 4        | 2         |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">| 5        | 2018-08-04 | 1       | 3        | 4         |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">| 6        | 2019-08-05 | 2       | 2        | 4         |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">+----------+------------+---------+----------+-----------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">Result table:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">+-----------+------------+----------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">| buyer_id  | join_date  | orders_in_2019 |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">+-----------+------------+----------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">| 1         | 2018-01-01 | 1              |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">| 2         | 2018-02-09 | 2              |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">| 3         | 2018-01-19 | 0              |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">| 4         | 2018-05-21 | 0              |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">+-----------+------------+----------------+</span></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> users.user_id <span class="keyword">as</span> buyer_id,join_date,<span class="keyword">ifnull</span>(cnt,<span class="number">0</span>) <span class="keyword">as</span> orders_in_2019 <span class="keyword">from</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">users</span> <span class="keyword">left</span> <span class="keyword">join</span>(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">select</span> user_id,<span class="keyword">count</span>(*) <span class="keyword">as</span> cnt</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">inner</span> <span class="keyword">join</span> orders <span class="keyword">on</span> user_id=buyer_id</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">where</span> <span class="keyword">year</span>(order_date)=<span class="number">2019</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">group</span> <span class="keyword">by</span> user_id</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">) <span class="keyword">as</span> ret <span class="keyword">on</span> users.user_id=ret.user_id</span></pre></td></tr></table></figure>
+<hr>
 <p>个人感觉SQL还是要多写多刷题才能学好。很多需求只有写过一遍才知道怎么写，很多SQL语句只有报错了才知道原来不符合语法规范。</p>
 <p>leetcode应该算是练习SQL的一个比较好的平台了，毕竟你不需要为了检验自己写得对不对而建表造数据。</p>
 <p>就我目前的所学知识，可能简单题都不一定能刷完吧，还是要加把劲啊。</p>
@@ -257,6 +263,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
               <a href="/tags/SQL/" rel="tag"># SQL</a>
           </div>
 
