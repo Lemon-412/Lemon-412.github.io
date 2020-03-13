@@ -46,16 +46,18 @@
   };
 </script>
 
-  <meta name="description" content="愿我在未来的几年内，不要因为走得太远，忘记自己为什么出发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lemon&#39;s blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;C-C&#x2F;index.html">
+  <meta name="description" content="MySQL自带了很多字符串处理、日期处理等函数，以及if expression等…">
+<meta name="keywords" content="SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 常用函数">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;13&#x2F;MySQL-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0&#x2F;index.html">
 <meta property="og:site_name" content="Lemon&#39;s blog">
-<meta property="og:description" content="愿我在未来的几年内，不要因为走得太远，忘记自己为什么出发">
+<meta property="og:description" content="MySQL自带了很多字符串处理、日期处理等函数，以及if expression等…">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-13T07:22:50.672Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/tags/C-C/">
+<link rel="canonical" href="http://yoursite.com/2020/03/13/MySQL-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">
 
 
 <script id="page-configurations">
@@ -63,13 +65,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签: C/C++ | Lemon's blog</title>
+  <title>MySQL 常用函数 | Lemon's blog</title>
   
 
 
@@ -175,70 +177,108 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">C/C++
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/13/MySQL-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Lemon.jpg">
+      <meta itemprop="name" content="Lemon Qin">
+      <meta itemprop="description" content="愿我在未来的几年内，不要因为走得太远，忘记自己为什么出发">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemon's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL 常用函数
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-13 13:54:04 / 修改时间：15:22:50" itemprop="dateCreated datePublished" datetime="2020-03-13T13:54:04+08:00">2020-03-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-19T16:48:58+08:00"
-              content="2019-12-19">
-          12-19
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/19/Leetcode715-Range%E6%A8%A1%E5%9D%97/" itemprop="url">
-            <span itemprop="name">Leetcode715 Range模块</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-11T21:33:12+08:00"
-              content="2019-12-11">
-          12-11
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/11/C-C-%E5%A1%AB%E5%9D%91-static%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">
-            <span itemprop="name">C/C++ 填坑 static的使用</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
+        <p>MySQL自带了很多字符串处理、日期处理等函数，以及if expression等…</p>
+<a id="more"></a>
+<p>常用的课内已经学过的主要都是聚合函数，有<code>AVG</code>、<code>COUNT</code>、<code>MIN</code>、<code>MAX</code>、<code>SUM</code>等，但事实上MySQL还包含很多常用的函数，leetcode数据库部分简单、中等题随便一刷就知道自己学得有多浅薄了。</p>
+<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><ul>
+<li><code>curdate()</code>： 返回当前日期</li>
+<li><code>adddate(date, interval x day)</code>、<code>subdate(...)</code>： 日期偏移，默认是天</li>
+<li><code>date(x)</code>、<code>time(x)</code>：试图将x转换成日期或时间</li>
+<li><code>datediff(d1,d2)</code>、<code>timediff(t1,t2)</code>： 计算d1—&gt;d2的<strong>天数</strong>或<strong>秒数</strong></li>
+<li><code>day(d)</code>、<code>month(d)</code>、<code>year(d)</code>：返回日期对应的部分</li>
+</ul>
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><ul>
+<li><code>CEIL(x)</code>、<code>FLOOR(x)</code>： 返回大于等于x的最小数，小于等于x的最大数</li>
+<li><code>LEAST(exp1,exp2,...)</code>、<code>GREATEST(exp1,exp2,...)</code>： 返回表达式中最大值或最小值</li>
+</ul>
+<h3 id="高级函数"><a href="#高级函数" class="headerlink" title="高级函数"></a>高级函数</h3><ul>
+<li><p><code>if(expr,v1,v2)</code>：expr?v1:v2</p>
+</li>
+<li><p><code>ifnull(expr,v1,v2)</code>：<code>if(v1 is not null,v1,v2)</code></p>
+</li>
+<li><p><code>nullif(expr1,exor2)</code>：<code>if(expr1=expr2,null,expr1)</code></p>
+</li>
+<li><p><code>CASE expression</code>：switch表达式，自带break</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">CASE expression</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    WHEN condition1 THEN result1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    WHEN condition2 THEN result2</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">   ...</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    WHEN conditionN THEN resultN</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    ELSE result</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">END</span></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>个人感觉SQL还是要多写多刷题才能学好。很多需求只有写过一遍才知道怎么写，很多SQL语句只有报错了才知道原来不符合语法规范。</p>
+<p>leetcode应该算是练习SQL的一个比较好的平台了，毕竟你不需要为了检验自己写得对不对而建表造数据。</p>
+<p>就我目前的所学知识，可能简单题都不一定能刷完吧，还是要加把劲啊。</p>
 
     </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SQL/" rel="tag"># SQL</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/28/Leetcode4-%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/" rel="prev" title="Leetcode4 寻找两个有序数组的中位数">
+      <i class="fa fa-chevron-left"></i> Leetcode4 寻找两个有序数组的中位数
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -266,6 +306,7 @@
       </ul>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#日期函数"><span class="nav-text">日期函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学函数"><span class="nav-text">数学函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级函数"><span class="nav-text">高级函数</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
