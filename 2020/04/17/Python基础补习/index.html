@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="Lemon&#39;s blog">
 <meta property="og:description" content="这应该是一篇会长期更新的帖子…是时候补补Python基础语法了">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-04T16:55:43.444Z">
+<meta property="og:updated_time" content="2020-05-12T11:56:08.275Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/04/17/Python%E5%9F%BA%E7%A1%80%E8%A1%A5%E4%B9%A0/">
@@ -212,7 +212,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-05 00:55:43" itemprop="dateModified" datetime="2020-05-05T00:55:43+08:00">2020-05-05</time>
+                <time title="修改时间：2020-05-12 19:56:08" itemprop="dateModified" datetime="2020-05-12T19:56:08+08:00">2020-05-12</time>
               </span>
 
           
@@ -235,11 +235,11 @@
 <li>Python语法比较散，需要一个地方集中整理备忘</li>
 <li>其实是课程《Python计算》的学习感悟啦&gt;_&lt;</li>
 </ul>
-<p><strong>TODO</strong>：</p>
-<p><strong>待更新</strong>：</p>
+<p><strong>Wish List</strong>：</p>
 <ul>
-<li>The Zen of Python：<del>内存管理</del>、type hint、语法规范</li>
-<li>基本语法：lambda、常用方法、IO、异常处理</li>
+<li>The Zen of Python：<del>内存管理</del>、语法规范</li>
+<li>基本语法：常用方法、IO、异常处理</li>
+<li>函数：<del>type hint</del>、<del>lambda</del>、<del>函数调用</del>、面向对象</li>
 <li>字符串：<del>切片</del>、re、<del>格式化字符串</del></li>
 <li>数据结构：推导式、list、dict、tuple、set、链表</li>
 <li>标准库与常用第三方库：numpy……</li>
@@ -266,42 +266,17 @@
 <li>分代回收：新创建的变量会进入0代，每次回收必备检查。若不被回收则逐渐进入1、2代，减少检查比例</li>
 </ul>
 <h2 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1. 基本语法"></a>1. 基本语法</h2><h3 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h3><ul>
-<li><p><code>func(*args)</code>：在函数定义时将参数当做tuple或在函数调用时将tuple，list等当做参数处理</p>
-<ul>
-<li><p>函数定义时：将参数聚合</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*args)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">for</span> elem <span class="keyword">in</span> args:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        print(elem, end=<span class="string">' '</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    print()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">func((<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'d'</span>,<span class="string">'c'</span>))  <span class="comment"># ('a', 'b', 'd', 'c')</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">func(<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'d'</span>,<span class="string">'c'</span>)    <span class="comment"># a b d c</span></span></pre></td></tr></table></figure>
+<li><p>reduce()：</p>
 </li>
-<li><p>函数调用时：将list,tuple拆开作为参数传递</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x, s, y)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    print(x+<span class="number">1</span>, s, y<span class="number">-1</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">st=[<span class="number">122</span>,<span class="string">'456'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">func(*st, <span class="number">790</span>)  <span class="comment"># 123 456 789</span></span></pre></td></tr></table></figure>
+<li><p>filter()：</p>
 </li>
-<li><p>作为切片使用：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">first,*rest=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">print(first, rest) <span class="comment"># 1 [2,3,4]</span></span></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p><code>func(**kwargs)</code>：在函数定义时将参数当做字典或在函数调用时将字典当做参数处理</p>
-<ul>
-<li><p>函数定义时：将参数聚合</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(argc, **kwargs)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    print(<span class="string">'argc ='</span>,argc)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    print(<span class="string">'kwargs ='</span>,kwargs)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">func(<span class="number">5</span>,a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># argc = 5</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># kwargs = &#123;'a': 1, 'b': 2, 'c': 3&#125;</span></span></pre></td></tr></table></figure>
-</li>
-<li><p>函数调用时：将字典拆开作为参数传递</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">dic=&#123;<span class="string">'name'</span>:<span class="string">'Lemon'</span>,<span class="string">'depth'</span>:<span class="string">'CS'</span>&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">print(<span class="string">"my name is &#123;name&#125;, I am studying in &#123;depth&#125;."</span>.format(**dic))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># my name is Lemon, I am studying in CS.</span></span></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>reduce()</p>
-</li>
-<li><p>filter()</p>
-</li>
-<li><p>yield()</p>
+<li><p>yield()：</p>
 </li>
 </ul>
 <h3 id="常用内置函数"><a href="#常用内置函数" class="headerlink" title="常用内置函数"></a>常用内置函数</h3><ul>
-<li>map：</li>
-<li>reversed：</li>
-<li>sorted：</li>
+<li>map()：</li>
+<li>reversed()：</li>
+<li>sorted()：</li>
 </ul>
 <h3 id="类的方法与运算符"><a href="#类的方法与运算符" class="headerlink" title="类的方法与运算符"></a>类的方法与运算符</h3><ul>
 <li><code>__init__</code>：初始化函数</li>
@@ -317,14 +292,50 @@
 <li><code>__setitem__</code>：下标修改或迭代器修改</li>
 <li><code>__dict__</code>：使用一个字典对对象中成员的值进行修改，一般不需要重载</li>
 </ul>
-<h2 id="2-字符串"><a href="#2-字符串" class="headerlink" title="2. 字符串"></a>2. 字符串</h2><p> 在Python中，字符串是<strong>不可变对象</strong>。在使用方法对字符串进行更新时，往往需要新建对象。</p>
+<h2 id="2-函数"><a href="#2-函数" class="headerlink" title="2. 函数"></a>2. 函数</h2><h3 id="Type-hint"><a href="#Type-hint" class="headerlink" title="Type hint"></a>Type hint</h3><p>众所周知，Python属于<strong>强类型</strong>编程语言，因此每个变量在它的生命周期结束前始终只有一种类型。</p>
+<p>然而，Python也是<strong>动态类型</strong>，一个标识符可能有多段生命周期。</p>
+<p>具体可以参考<a href="https://www.zhihu.com/question/19918532" target="_blank" rel="noopener">这里</a>。</p>
+<p>并且，Python的变量类型是隐式的，这也意味着在函数传参的时候可能需要对变量类型进行一定约定，以避免意外情况发生。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a, b)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    print(a + b)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">func(<span class="number">1</span>, <span class="number">2</span>) <span class="comment"># 3</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">func(<span class="string">'1'</span>, <span class="string">'2'</span>) <span class="comment"># 12</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">func(<span class="number">1</span>, <span class="string">'2'</span>) <span class="comment"># unsupported operand type(s) for +: 'int' and 'str'</span></span></pre></td></tr></table></figure>
+<p>Python提供了Type hint，可以帮助程序员和IDE了解变量的类型，语法如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a: int, b: int)</span> -&gt; int:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> a + b</span></pre></td></tr></table></figure>
+<p>可惜的是，Type hint似乎没有强制执行能力。如果要保证数据类型出错就报错，则可能需要用assert断言。</p>
+<h3 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h3><p><code>func(*args)</code>：在函数定义时将参数当做tuple或在函数调用时将tuple，list等当做参数处理</p>
+<ul>
+<li><p>函数定义时：将参数聚合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*args)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">for</span> elem <span class="keyword">in</span> args:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        print(elem, end=<span class="string">' '</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    print()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">func((<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'d'</span>,<span class="string">'c'</span>))  <span class="comment"># ('a', 'b', 'd', 'c')</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">func(<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'d'</span>,<span class="string">'c'</span>)    <span class="comment"># a b d c</span></span></pre></td></tr></table></figure>
+</li>
+<li><p>函数调用时：将list,tuple拆开作为参数传递</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x, s, y)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    print(x+<span class="number">1</span>, s, y<span class="number">-1</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">st=[<span class="number">122</span>,<span class="string">'456'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">func(*st, <span class="number">790</span>)  <span class="comment"># 123 456 789</span></span></pre></td></tr></table></figure>
+</li>
+<li><p>作为切片使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">first,*rest=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">print(first, rest) <span class="comment"># 1 [2,3,4]</span></span></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><code>func(**kwargs)</code>：在函数定义时将参数当做字典或在函数调用时将字典当做参数处理</p>
+<ul>
+<li><p>函数定义时：将参数聚合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(argc, *args, **kwargs)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    print(<span class="string">'argc ='</span>, argc) <span class="comment"># argc = 5</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    print(<span class="string">'args ='</span>, args) <span class="comment"># args = (6, 7)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    print(<span class="string">'kwargs ='</span>, kwargs) <span class="comment"># kwargs = &#123;'a': 1, 'b': 2, 'c': 3&#125;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">func(<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, a=<span class="number">1</span>, b=<span class="number">2</span>, c=<span class="number">3</span>)</span></pre></td></tr></table></figure>
+</li>
+<li><p>函数调用时：将字典拆开作为参数传递</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">dic=&#123;<span class="string">'name'</span>:<span class="string">'Lemon'</span>,<span class="string">'depth'</span>:<span class="string">'CS'</span>&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">print(<span class="string">"my name is &#123;name&#125;, I am studying in &#123;depth&#125;."</span>.format(**dic))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># my name is Lemon, I am studying in CS.</span></span></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x, y, z)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    print(x, y, z)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">a = &#123;<span class="string">'x'</span>:<span class="number">1</span>, <span class="string">'z'</span>:<span class="number">2</span>, <span class="string">'y'</span>:<span class="number">3</span>&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">func(*a)  <span class="comment"># x z y</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">func(*a.values())  <span class="comment"># 1 2 3</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">func(**a)  <span class="comment"># 1 3 2</span></span></pre></td></tr></table></figure>
+<p>其中前两个操作可能是危险的，Python字典对顺序是否维护与版本有关</p>
+</li>
+</ul>
+<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><ul>
+<li>格式：<code>lambda arg1, arg2: expression(arg1,arg2)</code> </li>
+<li>Python的lambda只允许冒号后有一个表达式，但表达式可以调用函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(n)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: x * <span class="number">10</span> + n</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    print(func(i)(i + <span class="number">1</span>), end=<span class="string">' '</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 10 21 32 43 54 65 76 87 98</span></span></pre></td></tr></table></figure>
+<h2 id="3-字符串"><a href="#3-字符串" class="headerlink" title="3. 字符串"></a>3. 字符串</h2><p> 在Python中，字符串是<strong>不可变对象</strong>。在使用方法对字符串进行更新时，往往需要新建对象。</p>
 <h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
 <li><p><code>format</code>：格式化字符串</p>
 <ul>
 <li>基本用法：<code>&quot;{}{}abc&quot;.format(123,&#39;456&#39;)</code> —&gt; <code>123456abc</code></li>
 <li>使用下标：<code>&quot;{1}{0}{1}&quot;.format(&#39;o&#39;,&#39;l&#39;)</code> —&gt; <code>lol</code></li>
 <li>使用list或tuple：<code>&quot;{0[1]}{0[0]}{1}&quot;.format([1,2],3)</code> —&gt; <code>213</code></li>
-<li>使用dic：<code>&quot;{a}{b}{c}&quot;.format(**{&#39;a&#39;:1,&#39;b&#39;:234},c=&#39;hello&#39;)</code> —&gt; <code>1234hello</code></li>
+<li>使用dict：<code>&quot;{a}{b}{c}&quot;.format(**{&#39;a&#39;:1,&#39;b&#39;:234},c=&#39;hello&#39;)</code> —&gt; <code>1234hello</code></li>
 <li>格式转换：用于整数和浮点数<ul>
 <li><code>{:.3f}</code>：浮点数四舍五入保留三位小数</li>
 <li><code>{:10}</code>：右对齐宽度10</li>
@@ -357,7 +368,7 @@
 </ul>
 </li>
 <li><code>eval</code>：尝试将字符串转表达式求值</li>
-<li><code>startwith</code>、<code>endwith</code>：匹配前后缀，字面意思</li>
+<li><code>startswith</code>、<code>endwith</code>：返回bool值，是否匹配前后缀</li>
 <li><code>isalnum</code>、<code>isalpha</code>、<code>isdigit</code>、<code>isspace</code>、<code>isupper</code>、<code>islower</code>：字面意思</li>
 <li><code>center</code>、<code>ljust</code>、<code>rjust</code>：<code>(10,&#39;=&#39;)</code>中左右对齐10个字符，填充<code>=</code></li>
 </ul>
@@ -377,8 +388,9 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-数据结构"><a href="#3-数据结构" class="headerlink" title="3. 数据结构"></a>3. 数据结构</h2><p>…</p>
-<h2 id="4-标准库与常用第三方库"><a href="#4-标准库与常用第三方库" class="headerlink" title="4. 标准库与常用第三方库"></a>4. 标准库与常用第三方库</h2><p>…</p>
+<p>list和str的切片方式类似</p>
+<h2 id="4-数据结构"><a href="#4-数据结构" class="headerlink" title="4. 数据结构"></a>4. 数据结构</h2><h3 id="列表list"><a href="#列表list" class="headerlink" title="列表list"></a>列表list</h3><h3 id="元组tuple"><a href="#元组tuple" class="headerlink" title="元组tuple"></a>元组tuple</h3><h3 id="集合set"><a href="#集合set" class="headerlink" title="集合set"></a>集合set</h3><h3 id="字典dict"><a href="#字典dict" class="headerlink" title="字典dict"></a>字典dict</h3><h3 id="堆heapq"><a href="#堆heapq" class="headerlink" title="堆heapq"></a>堆heapq</h3><h3 id="队列Queue"><a href="#队列Queue" class="headerlink" title="队列Queue"></a>队列Queue</h3><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>Python中的栈直接使用列表实现即可，复杂度一致</p>
+<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><h2 id="5-标准库与常用第三方库"><a href="#5-标准库与常用第三方库" class="headerlink" title="5. 标准库与常用第三方库"></a>5. 标准库与常用第三方库</h2><p>…</p>
 
     </div>
 
@@ -440,7 +452,7 @@
       </ul>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-The-Zen-of-Python"><span class="nav-text">0. The Zen of Python</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内存管理"><span class="nav-text">内存管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基本语法"><span class="nav-text">1. 基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本运算"><span class="nav-text">基本运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用内置函数"><span class="nav-text">常用内置函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类的方法与运算符"><span class="nav-text">类的方法与运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-字符串"><span class="nav-text">2. 字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法"><span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切片"><span class="nav-text">切片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-数据结构"><span class="nav-text">3. 数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-标准库与常用第三方库"><span class="nav-text">4. 标准库与常用第三方库</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-The-Zen-of-Python"><span class="nav-text">0. The Zen of Python</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内存管理"><span class="nav-text">内存管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基本语法"><span class="nav-text">1. 基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本运算"><span class="nav-text">基本运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用内置函数"><span class="nav-text">常用内置函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类的方法与运算符"><span class="nav-text">类的方法与运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-函数"><span class="nav-text">2. 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Type-hint"><span class="nav-text">Type hint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数调用"><span class="nav-text">函数调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lambda表达式"><span class="nav-text">lambda表达式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-字符串"><span class="nav-text">3. 字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法"><span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切片"><span class="nav-text">切片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-数据结构"><span class="nav-text">4. 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#列表list"><span class="nav-text">列表list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组tuple"><span class="nav-text">元组tuple</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合set"><span class="nav-text">集合set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典dict"><span class="nav-text">字典dict</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆heapq"><span class="nav-text">堆heapq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#队列Queue"><span class="nav-text">队列Queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈"><span class="nav-text">栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表"><span class="nav-text">链表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-标准库与常用第三方库"><span class="nav-text">5. 标准库与常用第三方库</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
