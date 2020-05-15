@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="Lemon&#39;s blog">
 <meta property="og:description" content="这应该是一篇会长期更新的帖子…是时候补补Python基础语法了">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-12T12:12:56.649Z">
+<meta property="og:updated_time" content="2020-05-12T16:01:47.478Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/04/17/Python%E5%9F%BA%E7%A1%80%E8%A1%A5%E4%B9%A0/">
@@ -212,7 +212,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-12 20:12:56" itemprop="dateModified" datetime="2020-05-12T20:12:56+08:00">2020-05-12</time>
+                <time title="修改时间：2020-05-13 00:01:47" itemprop="dateModified" datetime="2020-05-13T00:01:47+08:00">2020-05-13</time>
               </span>
 
           
@@ -300,7 +300,7 @@
 <p>Python提供了Type hint，可以帮助程序员和IDE了解变量的类型，语法如下。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a: int, b: int)</span> -&gt; int:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> a + b</span></pre></td></tr></table></figure>
 <p>可惜的是，Type hint似乎没有强制执行力。（比如上述函数依然可以正常执行<code>func(&#39;1&#39;, &#39;2&#39;)</code>得到<code>&#39;12&#39;</code>）</p>
-<p>如果要保证数据类型出错就报错，则可能需要用assert断言。</p>
+<p>如果要保证数据类型出错就报错，则可能需要用assert断言或<code>isinstance</code>函数。</p>
 <h3 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h3><p><code>func(*args)</code>：在函数定义时将参数当做tuple或在函数调用时将tuple，list等当做参数处理</p>
 <ul>
 <li><p>函数定义时：将参数聚合</p>
@@ -469,14 +469,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
