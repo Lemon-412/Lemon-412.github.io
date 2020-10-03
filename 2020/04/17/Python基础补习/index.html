@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="Lemon&#39;s blog">
 <meta property="og:description" content="这应该是一篇会长期更新的帖子…是时候补补Python基础语法了">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-17T08:46:17.808Z">
+<meta property="og:updated_time" content="2020-10-03T09:31:29.042Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/04/17/Python%E5%9F%BA%E7%A1%80%E8%A1%A5%E4%B9%A0/">
@@ -212,7 +212,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-17 16:46:17" itemprop="dateModified" datetime="2020-07-17T16:46:17+08:00">2020-07-17</time>
+                <time title="Modified: 2020-10-03 17:31:29" itemprop="dateModified" datetime="2020-10-03T17:31:29+08:00">2020-10-03</time>
               </span>
 
           
@@ -237,10 +237,10 @@
 </ul>
 <p><strong>Wish List</strong>：</p>
 <ul>
-<li>The Zen of Python：<del>内存管理</del>、语法规范</li>
+<li>The Zen of Python：内存管理、语法规范</li>
 <li>基本语法：常用方法、IO、异常处理</li>
-<li>函数：<del>type hint</del>、<del>lambda</del>、<del>函数调用</del>、面向对象</li>
-<li>字符串：<del>切片</del>、re、<del>格式化字符串</del></li>
+<li>函数：type hint、lambda、函数调用、面向对象</li>
+<li>字符串：<del>切片</del>、re、格式化字符串</li>
 <li>数据结构：推导式、list、dict、tuple、set、链表</li>
 <li>标准库与常用第三方库：numpy……</li>
 <li>扩充中(装饰器？cythonize？)……</li>
@@ -341,19 +341,30 @@
 <h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
 <li><p><code>format</code>：格式化字符串</p>
 <ul>
-<li>基本用法：<code>&quot;{}{}abc&quot;.format(123,&#39;456&#39;)</code> —&gt; <code>123456abc</code></li>
-<li>使用下标：<code>&quot;{1}{0}{1}&quot;.format(&#39;o&#39;,&#39;l&#39;)</code> —&gt; <code>lol</code></li>
-<li>使用list或tuple：<code>&quot;{0[1]}{0[0]}{1}&quot;.format([1,2],3)</code> —&gt; <code>213</code></li>
-<li>使用dict：<code>&quot;{a}{b}{c}&quot;.format(**{&#39;a&#39;:1,&#39;b&#39;:234},c=&#39;hello&#39;)</code> —&gt; <code>1234hello</code></li>
-<li>格式转换：用于整数和浮点数<ul>
+<li><p>基本用法：<code>&quot;{}{}abc&quot;.format(123,&#39;456&#39;)</code> —&gt; <code>123456abc</code></p>
+</li>
+<li><p>使用下标：<code>&quot;{1}{0}{1}&quot;.format(&#39;o&#39;,&#39;l&#39;)</code> —&gt; <code>lol</code></p>
+</li>
+<li><p>使用list或tuple：<code>&quot;{0[1]}{0[0]}{1}&quot;.format([1,2],3)</code> —&gt; <code>213</code></p>
+</li>
+<li><p>使用dict：<code>&quot;{a}{b}{c}&quot;.format(**{&#39;a&#39;:1,&#39;b&#39;:234},c=&#39;hello&#39;)</code> —&gt; <code>1234hello</code></p>
+</li>
+<li><p>格式转换：用于整数和浮点数</p>
+<ul>
 <li><code>{:.3f}</code>：浮点数四舍五入保留三位小数</li>
 <li><code>{:10}</code>：右对齐宽度10</li>
 <li><code>{:&lt;10}</code>：左对齐宽度10</li>
-<li><code>{:^10}</code>：居中宽度10</li>
+</ul>
+</li>
+<li><p><code>{:^10}</code>：居中宽度10</p>
+<ul>
 <li><code>{:x&gt;10}</code>：整数补前导x至宽度10</li>
 <li><code>{:x&lt;10}</code>：补后缀x至宽度10</li>
 <li><code>{:b}</code>二进制<code>{:d}</code>十进制<code>{:o}</code>八进制<code>{:x}</code>十六进制</li>
 </ul>
+</li>
+<li><p>如果只是想要输出变量，这里有一种非常好用的代替<code>format</code>的输出方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">x, y = <span class="number">3</span>, <span class="number">6</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">print(<span class="string">f"the position is [<span class="subst">&#123;x&#125;</span>, <span class="subst">&#123;y&#125;</span>]"</span>)</span></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -372,7 +383,8 @@
 </li>
 <li><code>lower</code>、<code>upper</code>、<code>capitalize</code>、<code>title</code>、<code>swapcase</code>：各种大小写转化，字面意思</li>
 <li><code>replace</code>：返回替换后的字符串</li>
-<li><code>strip</code>、<code>lstrip</code>、<code>rstrip</code>：删除（或删除左右侧）的指定字符，默认空白字符<ul>
+<li><p><code>strip</code>、<code>lstrip</code>、<code>rstrip</code>：删除（或删除左右侧）的指定字符，默认空白字符</p>
+<ul>
 <li>例如：<code>&quot;asasaslasasasa&quot;.lstrip(&#39;as&#39;)</code>—&gt; <code>lasasasa</code></li>
 </ul>
 </li>
@@ -556,14 +568,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
