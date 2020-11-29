@@ -46,18 +46,18 @@
   };
 </script>
 
-  <meta name="description" content="LIKE、BETWEEN、IS NULL、IS NOT NULL的使用">
-<meta name="keywords" content="SQL">
+  <meta name="description" content="In memory of Adobe Flash (1996.11 ~ 2020.12).">
+<meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL中谓词的使用">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;29&#x2F;SQL%E4%B8%AD%E8%B0%93%E8%AF%8D%E7%9A%84%E4%BD%BF%E7%94%A8&#x2F;index.html">
+<meta property="og:title" content="随笔2020.11">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;11&#x2F;29&#x2F;%E9%9A%8F%E7%AC%942020-11&#x2F;index.html">
 <meta property="og:site_name" content="Lemon&#39;s blog">
-<meta property="og:description" content="LIKE、BETWEEN、IS NULL、IS NOT NULL的使用">
+<meta property="og:description" content="In memory of Adobe Flash (1996.11 ~ 2020.12).">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-28T16:59:26.976Z">
+<meta property="og:updated_time" content="2020-11-29T14:44:44.011Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/01/29/SQL%E4%B8%AD%E8%B0%93%E8%AF%8D%E7%9A%84%E4%BD%BF%E7%94%A8/">
+<link rel="canonical" href="http://yoursite.com/2020/11/29/%E9%9A%8F%E7%AC%942020-11/">
 
 
 <script id="page-configurations">
@@ -71,7 +71,7 @@
   };
 </script>
 
-  <title>SQL中谓词的使用 | Lemon's blog</title>
+  <title>随笔2020.11 | Lemon's blog</title>
   
 
 
@@ -182,7 +182,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/SQL%E4%B8%AD%E8%B0%93%E8%AF%8D%E7%9A%84%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/29/%E9%9A%8F%E7%AC%942020-11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/Lemon.jpg">
@@ -195,7 +195,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          SQL中谓词的使用
+          随笔2020.11
         </h1>
 
         <div class="post-meta">
@@ -206,7 +206,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-01-29 00:00:09 / Modified: 00:59:26" itemprop="dateCreated datePublished" datetime="2020-01-29T00:00:09+08:00">2020-01-29</time>
+              <time title="Created: 2020-11-29 18:30:13 / Modified: 22:44:44" itemprop="dateCreated datePublished" datetime="2020-11-29T18:30:13+08:00">2020-11-29</time>
             </span>
 
           
@@ -220,14 +220,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>LIKE、BETWEEN、IS NULL、IS NOT NULL的使用</p>
+        <p>In memory of Adobe Flash (1996.11 ~ 2020.12).</p>
 <a id="more"></a>
-<p>在SQL中，<strong>谓词</strong>就是<strong>返回值位真值的函数</strong>。常用的谓词有LIKE、BETWEEN、IS NULL、IS NOT NULL、IN、EXISTS等。<br><em>按此定义MAX、MIN、ANY、ALL等并不能算作谓词(?)</em></p>
-<h3 id="LIKE"><a href="#LIKE" class="headerlink" title="LIKE"></a>LIKE</h3><p>LIKE子句用于模糊查询，通常与通配符连用，如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* ‘_’匹配一个字符，‘%’匹配至少一个字符</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 查询学生表中姓欧阳的学生信息</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> S </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> Sname <span class="keyword">LIKE</span> <span class="string">'欧阳%'</span>;</span></pre></td></tr></table></figure></p>
-<p>注意：在使用=替代LIKE时，通配符是不起转意作用的(即目标是“欧阳%”而非姓欧阳的人)</p>
-<h3 id="BETWEEN"><a href="#BETWEEN" class="headerlink" title="BETWEEN"></a>BETWEEN</h3><p>BETWEEN的使用可以解放连续的不等式表达式，往往和AND连用，如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 查询学号介于17100000和17120000之间的学生信息</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> S</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> Sno <span class="keyword">BETWEEN</span> <span class="number">17100000</span> <span class="keyword">AND</span> <span class="number">17120000</span>;</span></pre></td></tr></table></figure></p>
-<p>此外，BETWEEN还可以与NOT连用，起到取反作用。<br>注意：不同数据库对边界处理可能不一致。</p>
-<h3 id="IS-NULL、IS-NOT-NULL"><a href="#IS-NULL、IS-NOT-NULL" class="headerlink" title="IS NULL、IS NOT NULL"></a>IS NULL、IS NOT NULL</h3><p>SQL对数值和NULL的比较是不容忍的。即任何企图和NULL的比较都是False。例如以下查询均返回NULL：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="number">3</span>=<span class="literal">NULL</span>); <span class="comment">/* NULL */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="number">3</span>!=<span class="literal">NULL</span>); <span class="comment">/* NULL */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="literal">NULL</span>=<span class="literal">NULL</span>); <span class="comment">/* NULL */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="keyword">NOT</span> <span class="literal">NULL</span>=<span class="literal">NULL</span>); <span class="comment">/* NULL */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="keyword">NOT</span> <span class="literal">NULL</span>!=<span class="literal">NULL</span>); <span class="comment">/* NULL */</span></span></pre></td></tr></table></figure><br>要返回真值，应该使用IS NULL 或 IS NOT NULL，如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="number">3</span> <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>); <span class="comment">/* 1 */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="literal">NULL</span> <span class="keyword">IS</span> <span class="literal">NULL</span>); <span class="comment">/* 1 */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>((<span class="literal">NULL</span>=<span class="literal">NULL</span>) <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>); <span class="comment">/* 0 */</span></span></pre></td></tr></table></figure></p>
+<p>回头看了一下，上一篇随笔还在八月中旬，现在已经快十二月了，这期间真的发生了非常多的事情。</p>
+<p>首先，我在光之树找到了一份后端开发的实习工作。光之树是一家做算法落地的公司（开发算法28开），我在职期间主要在做联邦学习federated learning。在小公司实习算是有利有弊吧（但对我来说肯定是利大于弊）。光之树在上海一共就不到20人（还包括5、6个实习生，北京那边人更少），因此上班不包午饭，实习生也不发电脑。但我个人认为这样的公司实习非常有利于个人的培养。同事都很nice，而且大家都坐一起很快就相互认识了，平时出去吃午饭也是吃着火锅唱着歌，吃完饭还会在张江散散步。敏均、涛哥、崔哥也给了我非常多学习的建议，张老师等研发核心人员的高超技术与眼界非常让我吃惊。另外，小公司业务逻辑分的不开，比较容易接触到整个产品。虽说是后端开发实习生，在我在职的三个月时间里基本没写过CRUD，但却也接触到了非常多的后端开发的知识，对linux指令的运用也稍微熟悉了一些，接触了非常多的开发工具，也了解了系统在面对更高并发需求时的解决办法。</p>
+<p>借敏均一句话说，实习3个月其实只算是走马观花。我很遗憾没有把这份实习一直做下去。事实上，在找到实习之前，我就已经有了明确的目标的：不要太累，要能学到东西，待遇不重要。而我认为这份实习非常符合我当初的计划，毫无意外对于我这种开发小白而言是一段非常宝贵的经历。我曾经半开玩笑的说，我来公司应当倒贴公司200元/天。我至今忘不了刚入职时，敏均为了培养我给我提出的一个假需求，我研究了三天代码，问了同事30个问题，改了三个版本，最终只修改了三行代码。在我好不容易push了却迟迟没有被merge，后来才发现这个需求早就被同事给加掉了。</p>
+<p>此外，我结束了长达三年半余的恋情，与我的前女友正式分手了。遗憾的是她删了微信屏蔽了空间，我们甚至没能做到和平分手。在这将近四年的时间里，我犯了非常多的错误。而我认为其中最致命的错误就是，恋爱初期的甜蜜使我忽略了太多双方之间不一致甚至是有隔阂的地方。是的，或许我爱上的始终只是我自己想象中的对方，是一个抽象的人，而不是她本身。而直至甜蜜退去各类矛盾逐渐暴露，我才意识到问题的严重性。</p>
+<p>自由恋爱真的很难，两个背景不同的人在生活的方方面面都可能出现不匹配的地方。自由恋爱也非常奢侈，花费大量的时间、精力、财力，却不一定能有一部恋爱番剧来得精彩。我曾一度以三观相合为目标去谈恋爱，但在现在看来，即便舍弃其他一切只考虑三观相合，也是奢侈的。</p>
+<p>在辞掉了实习之后，我回到了室友的身边，过起了宿舍生活。目前寝室里有两位考研的室友，他们每天7点起10点归，日复一日的学习。直研本校的岩松也非常勤奋的在导师手下早出晚归。我非常看好嘉伟和周帅，他们的努力是值得尊敬的，祝愿他们都能顺利上岸。当然，我在宿舍也以不打扰他们作为第一要务，尽全力配合他们的学习和生活作息。</p>
+<p>冬季学期自下周起就要开始了。虽然我早已修满学分，但还是选修了方老师的模式识别课程，并准备旁听岳晓冬老师的机器学习相关课程。此外，我还计划着进行学习cs229和230课程，每周两次的体育锻炼，以及每周一次固定的面经时间（学习实习过程中积累下来的问题，以及刷面经和算法题）。我还希望自己能在冬季学期完成毕业设计的代码，入门日语，练习钢琴并向母上学做一些基本的饭菜。事实上，我为以上计划安排了自己的课表，希望我在接下来的一学期里能严格遵守。不，我一定会遵守，否则就对不起我的离职，也对不起我奋斗的室友们。</p>
+<p>线下和宇琪见了一面，相处的非常愉快。宇琪是本科学过一些机器学习相关课程，还在腾讯做了算法岗的实习。目前研究生实验室那边还没有什么消息，宇琪和我也就都打算自主选题完成本科毕设。我应该会选择一个我一直想做（一年半前的idea）但还始终没有动手的一个reinforcement learning小项目，最近在参考相关文献，尽快完成题目拟定。目前看来，题目的难度应该不算很大，好在上大对本科生的毕设要求本来也就不高。但愿我能在冬季学期打下一定的machine learning基础，然后等春季实验室那边有什么活的话就接活，如果继续没消息就准备春招再碰碰运气找一段大厂实习，当然这次的目标肯定就是冲着给简历贴金去了。</p>
+<p>不出意外的话Adobe Flash，没过几天就要被彻底移除支持了。回想到当初玩4399，初中从学校图书馆借了flash开发书籍的我，恍惚间已经过了将近十年。最近我还拉了室友回味了一下童年经典《狂扁小朋友》，虽然我至今依然无法通关这个小游戏。逝去的就让它逝去，只要自己还在一直向前，就没有什么值得遗憾的。希望我在未来的几年内，不要因为走得太远，忘记自己为什么出发。</p>
 
     </div>
 
@@ -237,7 +240,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/SQL/" rel="tag"># SQL</a>
+              <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"># 随笔</a>
           </div>
 
         
@@ -246,13 +249,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/01/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E9%87%87%E5%9D%91%E7%AC%94%E8%AE%B0/" rel="prev" title="服务器搭建采坑笔记">
-      <i class="fa fa-chevron-left"></i> 服务器搭建采坑笔记
+    <a href="/2020/11/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%80%E5%A4%8D%E4%B9%A0%E5%A4%A7%E7%BA%B2/" rel="prev" title="数据库原理一复习大纲">
+      <i class="fa fa-chevron-left"></i> 数据库原理一复习大纲
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/01/31/%E7%88%AC%E5%8F%96%E5%A4%96%E6%A0%A1%E6%95%99%E5%8A%A1%E5%A4%84%E6%88%90%E7%BB%A9%E5%8D%95/" rel="next" title="爬取外校教务处成绩单">
-      爬取外校教务处成绩单 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -289,7 +289,6 @@
       </ul>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LIKE"><span class="nav-text">LIKE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BETWEEN"><span class="nav-text">BETWEEN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IS-NULL、IS-NOT-NULL"><span class="nav-text">IS NULL、IS NOT NULL</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
