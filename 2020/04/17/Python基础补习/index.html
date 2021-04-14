@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="Lemon&#39;s blog">
 <meta property="og:description" content="这应该是一篇会长期更新的帖子…是时候补补Python基础语法了">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-11-19T06:05:13.515Z">
+<meta property="og:updated_time" content="2021-04-14T06:21:02.901Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://lemon-412.github.io/2020/04/17/Python%E5%9F%BA%E7%A1%80%E8%A1%A5%E4%B9%A0/">
@@ -212,7 +212,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-11-19 14:05:13" itemprop="dateModified" datetime="2020-11-19T14:05:13+08:00">2020-11-19</time>
+                <time title="Modified: 2021-04-14 14:21:02" itemprop="dateModified" datetime="2021-04-14T14:21:02+08:00">2021-04-14</time>
               </span>
 
           
@@ -282,11 +282,16 @@
 <li>C++的std::unordered_map对应的是Python的dict数据结构</li>
 </ul>
 </li>
-<li><code>reversed(iterable)</code>：对可迭代对象生成一个反转的迭代器</li>
-<li><code>sorted(iterable, reversed=False, key=None)</code>：对可迭代对象排序，返回一个新生成列表<ul>
+<li><p><code>reversed(iterable)</code>：对可迭代对象生成一个反转的迭代器</p>
+</li>
+<li><p><code>sorted(iterable, reversed=False, key=None)</code>：对可迭代对象排序，返回一个新生成列表</p>
+<ul>
 <li>关键参数key：用于比较关键字，如<code>key=lambda x:x%2</code></li>
 <li>关键参数reverse：用于表示是否反过来排序</li>
 </ul>
+</li>
+<li><p><code>enumerate(iterable, start=0)</code>：返回下标和可迭代对象的关系</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">a = [<span class="string">'hello'</span>, <span class="string">'world'</span>, <span class="string">'test'</span>, <span class="string">'python'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i, x <span class="keyword">in</span> enumerate(a, start=<span class="number">1</span>):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    print(<span class="string">f"<span class="subst">&#123;i&#125;</span> =&gt; <span class="subst">&#123;x&#125;</span>"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1 =&gt; hello</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2 =&gt; world</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3 =&gt; test</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 4 =&gt; python</span></span></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="类的方法与运算符"><a href="#类的方法与运算符" class="headerlink" title="类的方法与运算符"></a>类的方法与运算符</h3><ul>
