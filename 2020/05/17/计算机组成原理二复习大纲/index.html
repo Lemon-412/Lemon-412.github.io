@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Courgette:300,300italic,400,400italic,700,700italic|Andada:300,300italic,400,400italic,700,700italic|Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://lemon-412.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="大二春季是我第一次尝试用提纲形式复习，所以这份大纲可能参考价值一般……">
+<meta name="keywords" content="study note,计算机组成原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组成原理二复习大纲">
+<meta property="og:url" content="https:&#x2F;&#x2F;lemon-412.github.io&#x2F;2020&#x2F;05&#x2F;17&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E4%BA%8C%E5%A4%8D%E4%B9%A0%E5%A4%A7%E7%BA%B2&#x2F;index.html">
+<meta property="og:site_name" content="Lemon&#39;s blog">
+<meta property="og:description" content="大二春季是我第一次尝试用提纲形式复习，所以这份大纲可能参考价值一般……">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-09-02T12:26:44.000Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://lemon-412.github.io/2020/05/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E4%BA%8C%E5%A4%8D%E4%B9%A0%E5%A4%A7%E7%BA%B2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>计算机组成原理二复习大纲 | Lemon's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lemon's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/lemon-412" class="github-corner" title="Follow me on GitHub, Nya~~" aria-label="Follow me on GitHub, Nya~~" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://lemon-412.github.io/2020/05/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E4%BA%8C%E5%A4%8D%E4%B9%A0%E5%A4%A7%E7%BA%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Shizuku.jpg">
+      <meta itemprop="name" content="Lemon Qin">
+      <meta itemprop="description" content="在几乎无人关注的地方，留下自己内心的独白">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemon's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机组成原理二复习大纲
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-05-17 18:46:51" itemprop="dateCreated datePublished" datetime="2020-05-17T18:46:51+08:00">2020-05-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-02 20:26:44" itemprop="dateModified" datetime="2020-09-02T20:26:44+08:00">2020-09-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>大二春季是我第一次尝试用提纲形式复习，所以这份大纲可能参考价值一般……</p>
+<a id="more"></a>
+<p>计组复习，可以以书本和老师的复习音视频为主，以平时作业、书后练习和大纲为辅助去学。学校教材质量尚可。</p>
+<h2 id="第三章-多层次存储器"><a href="#第三章-多层次存储器" class="headerlink" title="第三章 多层次存储器"></a>第三章 多层次存储器</h2><h3 id="3-1-存储器概述"><a href="#3-1-存储器概述" class="headerlink" title="3.1 存储器概述"></a>3.1 存储器概述</h3><p>存储位元-&gt;存储单元-&gt;存储器</p>
+<p><strong>分类：</strong></p>
+<ul>
+<li><p>存储介质：半导体存储器、磁表面存储器</p>
+</li>
+<li><p>存取方式：随机存取器、顺序存储器（磁盘为半顺序存储器）</p>
+</li>
+<li><p>存储内容可变性：RAM（随机读写）、ROM（只读）</p>
+</li>
+<li><p>信息易失性</p>
+</li>
+<li><p>系统中的作用：主存储器、高速缓冲存储器、辅助存储器、控制存储器</p>
+</li>
+</ul>
+<p><strong>分级：</strong></p>
+<ul>
+<li><p>CPU内：cache-寄存器</p>
+</li>
+<li><p>主板内：cache-主存（主存）</p>
+</li>
+<li><p>主板外：磁盘、光盘（辅存=外存）</p>
+</li>
+<li><p>离线：磁带（辅存=外存）</p>
+</li>
+</ul>
+<p><strong>指标：</strong></p>
+<p>字存储单元：存放一个机器字的存储单元-&gt;字地址 B</p>
+<p>字节存储单元：存放一个字节的存储单元-&gt;字节地址 b</p>
+<ul>
+<li><p><strong>存储容量</strong>：存储器中可容纳的<strong>存储单元</strong>总数 1B=8b</p>
+</li>
+<li><p><strong>存取时间（存储器访问时间）</strong>：一次读操作从发出到完成，将数据读出到数据总线上的时间。存时间=取时间。</p>
+</li>
+<li><p><strong>存储周期</strong>：连续启动两次读操作间隔的最小时间。略大于存取时间。</p>
+</li>
+<li><p><strong>存储器带宽</strong>：单位时间里存储器所存取的信息量（字节/秒）</p>
+</li>
+</ul>
+<h3 id="3-2-SRAM静态读写存储器"><a href="#3-2-SRAM静态读写存储器" class="headerlink" title="3.2 SRAM静态读写存储器"></a>3.2 SRAM静态读写存储器</h3><p>特点：速度快、容量小、用作cache。</p>
+<p><strong>存储元</strong>：是触发器。</p>
+<p>总线：地址线、数据线、控制线。</p>
+<p><strong>双译码：</strong>方便组织更大容量。（行译码、列译码）</p>
+<h3 id="3-3-DRAM动态读写存储器"><a href="#3-3-DRAM动态读写存储器" class="headerlink" title="3.3 DRAM动态读写存储器"></a>3.3 DRAM动态读写存储器</h3><p>特点：容量极大、用作主存</p>
+<p><strong>存储元</strong>：记忆电路（MOS晶体管+电容器）。</p>
+<p>总线：地址线、数据线、控制线。</p>
+<p><strong>刷新方式：</strong>集中式刷新、分散式刷新</p>
+<h3 id="3-4-字位拓展"><a href="#3-4-字位拓展" class="headerlink" title="3.4 字位拓展"></a>3.4 字位拓展</h3><p>大题重点，必考。</p>
+<h3 id="3-5-并行存储器"><a href="#3-5-并行存储器" class="headerlink" title="3.5 并行存储器"></a>3.5 并行存储器</h3><p><strong>双端口存储器（空间并行）：</strong></p>
+<p>BUSY控制读写冲突</p>
+<p><strong>多模块交叉存储器（时间并行）：</strong></p>
+<p><strong>编址方式</strong>：</p>
+<ul>
+<li><p>顺序方式（模块号先，块内地址后）</p>
+</li>
+<li><p>交叉方式（块内地址先，模块号后）</p>
+</li>
+</ul>
+<p><strong>交叉存取度：</strong>存储周期除以总线传送周期 $m=\frac{T}{\tau}$</p>
+<h3 id="3-6-cache"><a href="#3-6-cache" class="headerlink" title="3.6 cache"></a>3.6 cache</h3><p>高速缓冲寄存器：利用程序访问局部性特征，解决CPU和主存间速度不匹配。</p>
+<p>特点：高速、容量小。</p>
+<p>CPU-cache按<strong>字</strong>交换，cache-主存按<strong>块</strong>交换。</p>
+<p>命中时直接把字传送给CPU；非命中则字从主存读入送到CPU，同时把块从主存读入到cache。</p>
+<ul>
+<li><p><strong>命中率</strong>： $h=\frac{N_c}{N_c+N_m}$ 与程序行为、cache容量、组织方式、块大小有关</p>
+</li>
+<li><p><strong>平均访问时间：</strong>  $t_a=ht_c+\left(1-h\right)t_m$</p>
+</li>
+<li><p><strong>访问效率：</strong>  $e=\frac{t_c}{t_a}$</p>
+</li>
+</ul>
+<p>Cache透明性：地址映射由硬件直接完成，几乎无时间损失。</p>
+<p><strong>地址映射</strong>：将主存地址定位到cache的一种方法。</p>
+<p><strong>全相连映射方式（自由）：</strong></p>
+<p>主存块地址与块内容一起存在cache行内。P93图</p>
+<p>查找：与所有cache内标记同时比较。</p>
+<p>标记大小：地址长度（块号+字地址）</p>
+<p>特点：块可放任意行、灵活；电路复杂。适用于小容量cache</p>
+<p><strong>直接映射方式（简单）：</strong></p>
+<p>Cache容量m行，则主存第km+x块都在映射到cache第x行。</p>
+<p>查找：将内存地址拆解成tag和行号。直接比较cache第行号块的标记与tag是否一致。</p>
+<p>标记大小：地址长度减去log2块容量。（tag|行号+字地址）</p>
+<p>特点：硬件简单、成本低；每个块只能放对应行，更易冲突。适用于大容量cache。</p>
+<p><strong>组相连映射方式（折衷）：</strong></p>
+<p>Cache容量m组，则主存第km+x块映射在cache第m组的都一个行上。</p>
+<p>查找：将内存地址拆成tag和组号。硬件比较组内所有标记是否匹配tag（组内硬件全查）</p>
+<p>标记大小：地址长度减去log2组数（tag|组号+字地址）</p>
+<p>特点：兼顾前两者优缺点</p>
+<p><strong>替换策略</strong>：</p>
+<ul>
+<li><p>LFU最不经常使用算法：命中行加一；替换时删除小的，并全部清零</p>
+</li>
+<li><p>LRU近期最少使用算法：命中行清零，其他加一；替换时删除大的</p>
+<p>特点：保护新行，提高命中率。</p>
+</li>
+<li><p>随机替换</p>
+</li>
+</ul>
+<p><strong>写操作策略</strong>：</p>
+<p>写入cache时应该保证主存同时被改。</p>
+<ul>
+<li>写回法：当行被替换时写入主存。需添加一个修改位标志。</li>
+</ul>
+<p>特点：多次写速度快，但有不一致风险。</p>
+<ul>
+<li>全写法：命中时同时进行写修改；未命中直接写入主存。</li>
+</ul>
+<p>特点：写操作无高速缓存，无需修改位，保证一致性。</p>
+<ul>
+<li>写一次法：第一次写命中才同时修改。</li>
+</ul>
+<h3 id="3-7-虚拟存储器"><a href="#3-7-虚拟存储器" class="headerlink" title="3.7 虚拟存储器"></a>3.7 虚拟存储器</h3><p>虚地址（逻辑地址）：编制程序时使用的地址-&gt;虚存空间</p>
+<p>实地址（物理地址）：物理内存的访问地址-&gt;主存空间</p>
+<p>再定位：程序进行虚地址到实地址转化的过程</p>
+<p><strong>虚存访问过程</strong>：</p>
+<p>判断虚地址对应部分是否在实存中：如果是，则进行地址变换并用实地址访存；否则，将辅存中部分地址调入内存再访问主存。</p>
+<p><strong>作用</strong>：主存小时扩展容量，主存大时缩短地址字段长度。存储管理、主存分配、存储保护。</p>
+<p><strong>与cache异同</strong>：</p>
+<ul>
+<li><p>出发点相同：都为了提升性价比</p>
+</li>
+<li><p>原理相同：利用程序局部性原理，将常用信息快调入更高速的存储器</p>
+</li>
+<li><p>侧重点不同：cache提升速度，虚存扩大空间</p>
+</li>
+<li><p>数据通路不同：cache与内存有直接通路，虚存依赖的辅存与CPU无直接通路。</p>
+</li>
+<li><p>透明性不同：cache全透明，虚存半透明</p>
+</li>
+<li><p>未命中损失不同：cache小，虚存大</p>
+</li>
+</ul>
+<p>关键问题：</p>
+<p>如何调度？地址如何映射？替换哪些数据进主存？主存和辅存同步更新？</p>
+<p><strong>页式虚拟存储器</strong>：</p>
+<p>虚地址逻辑页号+页表基址寄存器值-&gt;实存地址</p>
+<p>逻辑地址：逻辑页号+页内地址</p>
+<p>页表：有效位+物理页号</p>
+<p>转换后援缓冲器（TLB）：快表</p>
+<p>特点：页长固定。易于构造管理。</p>
+<p><strong>段式虚拟存储器</strong>：</p>
+<p>逻辑地址：逻辑段号+段内地址</p>
+<p>段表：有效位+段起址+段长</p>
+<p>有效位：是否在实存</p>
+<p>段起址：该段在实存中的首地址</p>
+<p>段长：该段的实际长度</p>
+<p>特点：段长不固定。有效利用空间，易于保护和共享。</p>
+<p><strong>段页式虚拟存储器</strong>：</p>
+<p>逻辑地址：（基号）+段号+页号+页内地址</p>
+<p>优点：易于管理，保护和共享。缺点：多次查表。</p>
+<h2 id="第六章-总线系统"><a href="#第六章-总线系统" class="headerlink" title="第六章 总线系统"></a>第六章 总线系统</h2><h3 id="6-1-总线的概念和结构形态"><a href="#6-1-总线的概念和结构形态" class="headerlink" title="6.1 总线的概念和结构形态"></a>6.1 总线的概念和结构形态</h3><p><strong>总线：</strong>构成计算机系统的互联机构，是多个系统功能部件之间进行数据传送的公共通路。借助总线可以完成系统各部件信息交换，并解决资源争用。</p>
+<p><strong>分类</strong>：</p>
+<ul>
+<li><p>内部总线：CPU内连接寄存器和运算部件的总线（超快）</p>
+</li>
+<li><p>系统总线：CPU和告诉功能部件（存储器、通道）互联的总线（快）</p>
+</li>
+<li><p>IO总线：和中低速IO设备互联的总线（慢）</p>
+</li>
+</ul>
+<p>特性：</p>
+<ul>
+<li><p>物理特性：物理连接方式（根数、插头形状、引脚方式）</p>
+</li>
+<li><p>功能特性：描述每一根线的功能</p>
+</li>
+<li><p>电气特性：线传递方向和有效电平范围</p>
+</li>
+<li><p>时间特性：每根线何时有效</p>
+</li>
+</ul>
+<p>总线标准化</p>
+<p>总线带宽：总线自身能达到的最高传输速率MB/s</p>
+<p>适配器/接口：实现高速CPU和各类低速设备之间工作速度上的匹配和同步</p>
+<p><strong>单总线结构</strong>：</p>
+<p>优点：易扩展为多CPU系统</p>
+<p>缺点：效率低，吞吐量小，所有连接设备必须高速运行</p>
+<p><strong>多总线结构</strong>：</p>
+<p>CPU总线、系统总线和高速总线通过<strong>桥</strong>连接</p>
+<p>高速总线和扩展总线通过<strong>扩展总线接口</strong>连接</p>
+<p>特点：提升效率和吞吐量</p>
+<p><strong>总线内部结构</strong>：</p>
+<ul>
+<li><p>数据传送总线：地址线、数据线、控制线</p>
+</li>
+<li><p>仲裁总线：总线请求线、总线授权线</p>
+</li>
+<li><p>中断和同步总线：中断请求线、中断认可线</p>
+</li>
+<li><p>公用线：CP线、电源线、地线、复位线等</p>
+</li>
+</ul>
+<h3 id="6-2-总线接口"><a href="#6-2-总线接口" class="headerlink" title="6.2 总线接口"></a>6.2 总线接口</h3><p>信息传送方式：串行（先低后高）、并行、分时（复用：既传地址又传数据）</p>
+<p>拆卸和装配</p>
+<p>CPU &lt;==&gt; IO接口 &lt;==&gt; <strong>设备控制器</strong>、外围设备</p>
+<p><strong>接口功能</strong>：控制、缓冲、状态、转换（串并）、整理、程序中断。</p>
+<p>分类：串行数据接口和并行数据接口</p>
+<p>波特率：每秒传送bit数</p>
+<h3 id="6-3-总线仲裁"><a href="#6-3-总线仲裁" class="headerlink" title="6.3 总线仲裁"></a>6.3 总线仲裁</h3><p>一次总线操作：一主多从。多个CPU和IO模块竞争控制权，产生仲裁。</p>
+<p><strong>集中式仲裁</strong>：</p>
+<p>总线请求信号线BR，总线授权信号线BG</p>
+<p>仲裁方式：</p>
+<ul>
+<li><p>链式查询：越近的优先级越高 特点线少</p>
+</li>
+<li><p>计数器定时查询：从0开始同菊花链，从中止点开始优先级相等 特点灵活</p>
+</li>
+<li><p>独立请求方式：n条BR和n条BG，排队电路根据优先次序决定响应 特点速度快</p>
+</li>
+</ul>
+<p><strong>分布式仲裁</strong>：</p>
+<p>每个主方都有仲裁号和仲裁器。仲裁总线上号最大的胜出，否则自动撤出。</p>
+<h3 id="6-4-总线的定时和数据传输模式"><a href="#6-4-总线的定时和数据传输模式" class="headerlink" title="6.4 总线的定时和数据传输模式"></a>6.4 总线的定时和数据传输模式</h3><p><strong>总线传输信息步骤</strong>：请求总线、总线仲裁、寻址、信息传送、状态返回</p>
+<p><strong>同步定时</strong>：事件出现由总线时钟信号确定。适用于总线长度短、存取时间相近的情况</p>
+<p><strong>异步定时</strong>：不需要时钟信号，应答式。周期长度可变，但总线复杂成本高。</p>
+<p><strong>总线数据传送模式</strong>：</p>
+<ul>
+<li><p>读、写操作：读操作两次竞争总线。</p>
+</li>
+<li><p>块传送操作：猝发式传送，连续读（写）四倍字长。</p>
+</li>
+<li><p>写后读、读修改写操作：用于校验和保护共享资源。</p>
+</li>
+<li><p>广播、广集操作：广播多从进行写操作；广集多从读进行逻辑与或检测中断。</p>
+</li>
+</ul>
+<h2 id="第七章-外存与IO设备"><a href="#第七章-外存与IO设备" class="headerlink" title="第七章 外存与IO设备"></a>第七章 外存与IO设备</h2><h3 id="7-1-外围设备概述"><a href="#7-1-外围设备概述" class="headerlink" title="7.1 外围设备概述"></a>7.1 外围设备概述</h3><p>组成：存储介质，驱动装置，控制电路</p>
+<p>分类：输入设备、输出设备、外存设备、数据通信设备、过程控制设备</p>
+<p>CPU主存 —&gt; IO —&gt; 外围设备控制器 —&gt; 外围设备</p>
+<p>外围设备在设备控制器下工作，而设备控制器通过IO接口与主机连接</p>
+<h3 id="7-2-磁盘存储设备（磁盘、磁带）"><a href="#7-2-磁盘存储设备（磁盘、磁带）" class="headerlink" title="7.2 磁盘存储设备（磁盘、磁带）"></a>7.2 磁盘存储设备（磁盘、磁带）</h3><p><strong>优点</strong>：存储容量大，位价格低；记录介质可以重复使用；记录信息长久保存不丢失，可以脱机；非破坏性读出。</p>
+<p><strong>缺点</strong>：存取速度慢，机械结构复杂，对工作环境要求高</p>
+<p>记录面：盘片上下两面</p>
+<p>磁道：记录面上同心圆（外0里n）</p>
+<p>扇区：记录一段定长信息，直接寻址的最小单位</p>
+<p>存储密度：</p>
+<p><strong>道密度</strong>：半径方向单位长度磁道数（道/英寸）</p>
+<p><strong>位密度</strong>：磁道单位长度上能记录的二进制位数（位/英寸）</p>
+<p><strong>面密度</strong>：位密度*道理密度（位/英寸²）</p>
+<p>存储容量：</p>
+<p>格式化容量&lt;非格式化容量</p>
+<p>平均找到时间：磁头定位到要求磁道的时间</p>
+<p>平均等待时间：磁盘上需要访问的信息到达磁道下的时间（磁盘转半圈的时间）</p>
+<p>数据传送时间</p>
+<p><strong>平均存取时间</strong>：  $T_a=T_s+\frac{1}{2r}+\frac{b}{rN}$ r为转速，b为传送字节数，N为每道字节数</p>
+<p>数据传输率：  $D_r=rN=D_ {\text{位}} \cdot v_{\text{线}}$</p>
+<p>单位时间内传送字节数</p>
+<h3 id="7-6-显示设备"><a href="#7-6-显示设备" class="headerlink" title="7.6 显示设备"></a>7.6 显示设备</h3><p>显示设备：以可见光的形式传递和处理信息的设备</p>
+<p>分辨率：显示器能表示的像素个数</p>
+<p>灰度级：黑白显示器中所显示的像素点的亮暗差别</p>
+<p>刷新：为了使人眼看到稳定的图像显示，电子束重复扫描屏幕的过程。</p>
+<p>刷新存储器（视频存储器）容量：$M=rC$  C=log2灰度级数 记得转化为B</p>
+<p>提高刷存的方式：使用高速DRAM，多体交叉，提升总线宽度，端口分离。</p>
+<h2 id="第八章-输入输出设备"><a href="#第八章-输入输出设备" class="headerlink" title="第八章 输入输出设备"></a>第八章 输入输出设备</h2><p><strong>速度分级</strong>：</p>
+<p>极慢：直接给出数据</p>
+<p>慢速、中速：异步定时方式；应答式</p>
+<p>（接收/发送前询问，设备就绪/忙，发送完成通知，撤回就绪信号）</p>
+<p>高速：同步定时方式</p>
+<p><strong>信息交换方式</strong>：</p>
+<p>程序查询方式：盯着每个人吃完糖</p>
+<p>程序中断方式：每人一粒，吃完发出中断请求再发糖</p>
+<p>直接内存访问方式（DMA）：每人两粒，吃完报告</p>
+<p>通道方式：直接托管给通道处理</p>
+<h3 id="8-1-程序查询方式"><a href="#8-1-程序查询方式" class="headerlink" title="8.1 程序查询方式"></a>8.1 程序查询方式</h3><p>数据在CPU和外围设备之间完全由计算机程序控制（CPU主动控制）</p>
+<p>优点：简单经济；缺点：垃圾</p>
+<p>设备编址：</p>
+<p>统一编址：输入输出设备编址格式和内存单元一致，不需要另外的IO指令组。</p>
+<p>单独编址：内存地址和IO设备地址分开，由不同操作码控制</p>
+<p><strong>接口</strong>：</p>
+<ul>
+<li><p>设备选择电路：判断总线呼叫的是不是本设备。</p>
+</li>
+<li><p>数据缓冲寄存器：存放输入/输出的数据</p>
+</li>
+<li><p>设备状态标志：“忙”、“就绪”、“错误”，以便接口对外设的监视</p>
+</li>
+</ul>
+<p>输入输出方式：</p>
+<ul>
+<li><p>CPU向IO设备发出状态字，请求传送</p>
+</li>
+<li><p>IO设备读入状态字</p>
+</li>
+<li><p>检查是否就绪</p>
+</li>
+<li><p>CPU从数据缓冲寄存器输入/刷出数据</p>
+</li>
+<li><p>IO接口接受/发送数据，CPU状态标志复位</p>
+</li>
+</ul>
+<p>程序查询方式的改进</p>
+<h3 id="8-2-程序中断方式"><a href="#8-2-程序中断方式" class="headerlink" title="8.2 程序中断方式"></a>8.2 程序中断方式</h3><p>指令周期 —&gt; 中断？—&gt; 中断周期 —&gt; 中断服务子程序</p>
+<p>五个问题两张图</p>
+<p><strong>准备就绪标志（RD）</strong></p>
+<p><strong>允许中断触发器（EI）</strong></p>
+<p><strong>中断请求触发器（IR）</strong></p>
+<p><strong>中断屏蔽触发器（IM）</strong></p>
+<p>单级中断：</p>
+<p>多级中断：一维中断、二维中断</p>
+<h3 id="8-3-DMA方式"><a href="#8-3-DMA方式" class="headerlink" title="8.3 DMA方式"></a>8.3 DMA方式</h3><p>DMA方式即直接内存访问方式，完全由硬件进行IO交换</p>
+<p>直接在<strong>内存</strong>和<strong>IO</strong>间进行，适用于<strong>高速传送数据。</strong></p>
+<p>优点：速度快</p>
+<p><strong>传送方式</strong>：</p>
+<p>停止CPU访问内存</p>
+<p>周期挪用</p>
+<p>DMA与CPU交替访内</p>
+<p><strong>DMA控制器</strong>：</p>
+<p>内存地址计数器</p>
+<p>字计数器</p>
+<p>数据缓冲寄存器</p>
+<p>DMA请求标志</p>
+<p>控制/状态逻辑</p>
+<p>中断机构</p>
+<p><strong>DMA传送过程</strong>：</p>
+<p>传送前预处理，正式传送，传送后处理</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/study-note/" rel="tag"># study note</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag"># 计算机组成原理</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/16/openmp%E5%85%A5%E9%97%A8/" rel="prev" title="openmp入门">
+      <i class="fa fa-chevron-left"></i> openmp入门
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/21/%E9%9A%8F%E7%AC%942020-05/" rel="next" title="随笔2020.05">
+      随笔2020.05 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81MjczOS8yOTIxNg"></div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-多层次存储器"><span class="nav-text">第三章 多层次存储器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-存储器概述"><span class="nav-text">3.1 存储器概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-SRAM静态读写存储器"><span class="nav-text">3.2 SRAM静态读写存储器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-DRAM动态读写存储器"><span class="nav-text">3.3 DRAM动态读写存储器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-字位拓展"><span class="nav-text">3.4 字位拓展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-并行存储器"><span class="nav-text">3.5 并行存储器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-cache"><span class="nav-text">3.6 cache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-虚拟存储器"><span class="nav-text">3.7 虚拟存储器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-总线系统"><span class="nav-text">第六章 总线系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-总线的概念和结构形态"><span class="nav-text">6.1 总线的概念和结构形态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-总线接口"><span class="nav-text">6.2 总线接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-总线仲裁"><span class="nav-text">6.3 总线仲裁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-总线的定时和数据传输模式"><span class="nav-text">6.4 总线的定时和数据传输模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章-外存与IO设备"><span class="nav-text">第七章 外存与IO设备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-外围设备概述"><span class="nav-text">7.1 外围设备概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-磁盘存储设备（磁盘、磁带）"><span class="nav-text">7.2 磁盘存储设备（磁盘、磁带）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-6-显示设备"><span class="nav-text">7.6 显示设备</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八章-输入输出设备"><span class="nav-text">第八章 输入输出设备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-程序查询方式"><span class="nav-text">8.1 程序查询方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-程序中断方式"><span class="nav-text">8.2 程序中断方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-DMA方式"><span class="nav-text">8.3 DMA方式</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lemon Qin"
+      src="/images/Shizuku.jpg">
+  <p class="site-author-name" itemprop="name">Lemon Qin</p>
+  <div class="site-description" itemprop="description">在几乎无人关注的地方，留下自己内心的独白</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lemon-412" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lemon-412" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lemon412@foxmail.com" title="E-Mail → mailto:lemon412@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+<!--<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=473928488&auto=1&height=32"></iframe>-->
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lemon Qin</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/chtholly.model.json"},"display":{"position":"left","width":200,"height":400,"hOffset":-30,"vOffset":-50},"mobile":{"show":false},"react":{"opacity":1},"log":false});</script></body>
+</html>
+
