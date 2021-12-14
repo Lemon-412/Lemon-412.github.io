@@ -46,15 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="TeXstudio是真的香臭…">
+  <meta name="description" content="TeXstudio是真的香…">
 <meta name="keywords" content="LaTeX">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TeXstudio采坑笔记">
 <meta property="og:url" content="https:&#x2F;&#x2F;lemon-412.github.io&#x2F;2019&#x2F;12&#x2F;31&#x2F;TeXstudio%E9%87%87%E5%9D%91%E7%AC%94%E8%AE%B0&#x2F;index.html">
 <meta property="og:site_name" content="Lemon&#39;s blog">
-<meta property="og:description" content="TeXstudio是真的香臭…">
+<meta property="og:description" content="TeXstudio是真的香…">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-04-22T16:10:02.000Z">
+<meta property="og:updated_time" content="2021-12-14T15:54:52.294Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://lemon-412.github.io/2019/12/31/TeXstudio%E9%87%87%E5%9D%91%E7%AC%94%E8%AE%B0/">
@@ -212,7 +212,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-23 00:10:02" itemprop="dateModified" datetime="2020-04-23T00:10:02+08:00">2020-04-23</time>
+                <time title="Modified: 2021-12-14 23:54:52" itemprop="dateModified" datetime="2021-12-14T23:54:52+08:00">2021-12-14</time>
               </span>
 
           
@@ -226,9 +226,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>TeXstudio是真的<del>香</del>臭…</p>
+        <p>TeXstudio是真的香…</p>
 <a id="more"></a>
-<h3 id="0-UPDATE"><a href="#0-UPDATE" class="headerlink" title="0. UPDATE"></a>0. UPDATE</h3><p><strong>此文没有参考价值，请务必不要选用CTeX！！！！</strong></p>
+<h3 id="0-UPDATE"><a href="#0-UPDATE" class="headerlink" title="0. UPDATE"></a>0. UPDATE</h3><p><strong>请务必不要选用CTeX！！！！</strong></p>
 <p>作者已经弃用CTeX。当初应该是彻底入错坑了……</p>
 <h3 id="1-LaTeX能干什么"><a href="#1-LaTeX能干什么" class="headerlink" title="1. LaTeX能干什么"></a>1. LaTeX能干什么</h3><ul>
 <li>写公式</li>
@@ -244,8 +244,8 @@
 <p><strong>由于CTeX安装包的问题，在安装前需要先备份环境变量Environment中的PATH</strong><br>在2.9版本的CTeX中，安装会直接覆盖当前电脑的环境变量而非追加，会导致LOCAL_MACHINE中的所有其他环境变量消失。<br><em>感谢罗老师的前车之鉴</em>  <strong>UPDATE：后来还是翻车了，PATH全没了</strong><br>打开regedit,找到以下路径中的PATH文件进行备份：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">本机环境路径：</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Environment</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">当前用户环境路径：</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">HKEY_CURRENT_USER\Environment</span></pre></td></tr></table></figure>
 <p>下载文件比较大，大概1.5GB。下载完成后直接无脑下一步，下一步。安装路径可以不放在系统盘。</p>
-<h3 id="4-安装TeXstudio"><a href="#4-安装TeXstudio" class="headerlink" title="4. 安装TeXstudio"></a>4. 安装TeXstudio</h3><p>TeXstudio文件大小非常小 [TeXstudio下载] (<a href="http://texstudio.sourceforge.net/" target="_blank" rel="noopener">http://texstudio.sourceforge.net/</a> )<br>下载完成后同样也是无脑下一步，没有什么坑点。</p>
-<p>运行界面后，需要修改默认的编译器，不然是不支持中文的。按以下路径修改编译器为XeLaTeX即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">option-&gt;configure Texstudio-&gt;Build-&gt;Default Compiler</span></pre></td></tr></table></figure></p>
+<h3 id="4-安装TeXstudio"><a href="#4-安装TeXstudio" class="headerlink" title="4. 安装TeXstudio"></a>4. 安装TeXstudio</h3><p>TeXstudio文件大小非常小 <a href="http://texstudio.sourceforge.net/" target="_blank" rel="noopener">TeXstudio下载</a><br>下载完成后同样也是无脑下一步，没有什么坑点。</p>
+<p>运行界面后，需要修改默认的编译器，不然是不支持中文的。按以下路径修改编译器为XeLaTeX即可（也得装）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">option-&gt;configure Texstudio-&gt;Build-&gt;Default Compiler</span></pre></td></tr></table></figure></p>
 <p><a href="https://blog.csdn.net/zhoucc1991/article/details/42001151" target="_blank" rel="noopener">参考1 LaTeX、TeX、CTeX之间的关系</a><br><a href="https://blog.csdn.net/aijava1/article/details/99282235" target="_blank" rel="noopener">参考2 TeXstudio安装</a><br><a href="https://blog.csdn.net/qq1838513380/article/details/89098016" target="_blank" rel="noopener">参考3 环境变量路径</a></p>
 
     </div>
@@ -329,14 +329,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
